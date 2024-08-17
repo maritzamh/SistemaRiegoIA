@@ -1,0 +1,148 @@
+:root {
+    --blue: #478b3ee6; /* Variable para el color azul */
+    --pink: rgba(255, 131, 195, 0.4); /* Variable para el color rosa con opacidad */
+    --white: rgba(255, 255, 255, 0.9); /* Variable para el color blanco con opacidad */
+}
+
+body {
+    font: 100% system-ui, sans-serif; /* Define la fuente del cuerpo como System UI, con fuente secundaria sans-serif */
+    box-sizing: border-box; /* Incluye padding y border en el cálculo del width y height */
+    overflow: hidden; /* Oculta el contenido que desborda el contenedor */
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+}
+
+.background {
+    background-image: url(https://images.unsplash.com/photo-1554692760-4b7e52978fb6?ixlib=rb-1.2.1&ixid=eyJhcBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=8); /* Imagen de fondo */
+    background-size: cover; /* Cubre todo el contenedor manteniendo la relación de aspecto */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-color: #252746; /* Color de fondo de reserva si la imagen no se carga */
+    background-position: center; /* Centra la imagen de fondo */
+    width: 100vw; /* Ancho del contenedor igual al ancho de la ventana de visualización */
+    height: 100vh; /* Altura del contenedor igual a la altura de la ventana de visualización */
+    position: absolute; /* Posiciona el contenedor de fondo en la parte superior del cuerpo */
+    z-index: 0; /* Establece el índice de z para que esté detrás de otros elementos */
+    top: 0; /* Alinea el contenedor en la parte superior */
+    left: 0; /* Alinea el contenedor a la izquierda */
+}
+
+.background-texture {
+    background: linear-gradient(
+        to top,
+        rgba(175, 225, 125, 0.9),
+        rgba(255, 255, 255, 0.9)
+    ); /* Crea un gradiente de color de fondo que va de un verde claro a blanco */
+    background-size: cover; /* Cubre todo el contenedor manteniendo la relación de aspecto */
+    width: 100vw; /* Ancho del contenedor igual al ancho de la ventana de visualización */
+    height: 100vh; /* Altura del contenedor igual a la altura de la ventana de visualización */
+    position: absolute; /* Posiciona el contenedor de textura en la parte superior del fondo */
+    z-index: 0; /* Establece el índice de z para que esté detrás de otros elementos */
+    top: 0; /* Alinea el contenedor en la parte superior */
+    left: 0; /* Alinea el contenedor a la izquierda */
+}
+
+.content-wrapper {
+    display: flex; /* Usa el modelo de caja flexible para alinear los elementos hijos */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
+    align-items: center; /* Alinea los elementos hijos verticalmente al centro */
+    position: relative; /* Posiciona el contenedor relativamente respecto a su contenedor padre */
+    z-index: 1; /* Establece el índice de z para que esté por encima del fondo */
+    padding: 40px; /* Añade un espacio interior de 40px alrededor del contenido */
+    height: 100vh; /* Altura del contenedor igual a la altura de la ventana de visualización */
+    box-sizing: border-box; /* Incluye padding y border en el cálculo del width y height */
+    margin-top: -50px; /* Ajusta la posición del contenedor moviéndolo hacia arriba */
+    top: -100px; /* Ajusta la posición del contenedor moviéndolo hacia arriba */
+}
+
+.left-content {
+    width: 40%; /* Define el ancho del contenedor de contenido de izquierda como el 40% del contenedor padre */
+}
+
+.image-container {
+    width: 50%; /* Define el ancho del contenedor de imagen como el 50% del contenedor padre */
+    margin-top: -50px; /* Ajusta la posición del contenedor moviéndolo hacia arriba */
+    top: -220px; /* Ajusta la posición del contenedor moviéndolo hacia arriba */
+}
+
+.stay-home {
+    font-size: 1.5rem; /* Tamaño de fuente de 1.5rem */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    letter-spacing: 0.5rem; /* Espaciado entre letras de 0.5rem */
+    margin-bottom: 0; /* Elimina el margen inferior */
+    color: #8b64b4; /* Color del texto */
+}
+
+h1 {
+    margin: 0 0 1rem 0; /* Establece márgenes para el título, con margen inferior de 1rem */
+    font-weight: 900; /* Define el peso de fuente como 900 (negrita) */
+    font-size: 4.5rem; /* Tamaño de fuente de 4.5rem */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    color: #3b365e; /* Color del texto */
+}
+
+.para {
+    color: #3b365ecb; /* Color del texto para párrafos */
+}
+
+button {
+    padding: 0.9rem 1.2rem; /* Espaciado interior del botón */
+    border-radius: 25px; /* Bordes redondeados con radio de 25px */
+    background-color: var(--blue); /* Color de fondo del botón usando la variable CSS */
+    border: 0; /* Sin borde */
+    text-transform: uppercase; /* Convierte el texto del botón a mayúsculas */
+    letter-spacing: 0.2rem; /* Espaciado entre letras de 0.2rem */
+    font-size: 1rem; /* Tamaño de fuente del botón */
+    color: var(--white); /* Color del texto del botón usando la variable CSS */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+}
+
+svg {
+    width: 100%; /* Ancho del SVG igual al ancho del contenedor padre */
+    height: auto; /* Mantiene la relación de aspecto del SVG */
+}
+
+#rightEar,
+#leftEar,
+#in-drawing {
+    animation: ear 2s linear infinite; /* Aplica la animación 'ear' a los elementos con duración de 2 segundos, de forma continua */
+}
+
+@keyframes ear {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0); /* Sin desplazamiento vertical */
+    }
+    40% {
+        transform: translateY(-30px); /* Desplaza hacia arriba en 30px */
+    }
+    60% {
+        transform: translateY(-15px); /* Desplaza hacia arriba en 15px */
+    }
+}
+
+@media (max-width: 800px) {
+    .content-wrapper {
+        flex-direction: column; /* Cambia la dirección del flex a columna en pantallas pequeñas */
+        align-items: center; /* Alinea los elementos hijos al centro */
+        text-align: center; /* Alinea el texto al centro */
+    }
+
+    .left-content, .image-container {
+        width: 100%; /* Ancho completo del contenedor padre en pantallas pequeñas */
+    }
+
+    h1 {
+        font-size: 2.5rem; /* Tamaño de fuente reducido en pantallas pequeñas */
+    }
+
+    button {
+        font-size: 0.8rem; /* Tamaño de fuente reducido en botones en pantallas pequeñas */
+    }
+
+    svg {
+        width: 80vw; /* Ancho del SVG reducido a 80% del ancho de la ventana de visualización en pantallas pequeñas */
+        margin-top: 20px; /* Añade margen superior al SVG en pantallas pequeñas */
+    }
+}

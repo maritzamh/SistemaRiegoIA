@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz de Bienvenida</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="chat_bot.css"> <!-- Asegúrate de tener este archivo con tu estilo -->
+    <link rel="stylesheet" href="nav.css"> <!-- Asegúrate de tener este archivo con tu estilo -->
+</head>
+
+<body>
+    <header>
+        <div class="nav-wrapper"> <!-- Contenedor principal para la barra de navegación -->
+            <div class="logo-container"> <!-- Contenedor para el logotipo y el texto del logotipo -->
+                <!-- Imagen del logotipo -->
+                <img src="/public/imagenes/logo.png" width="50" height="50" alt="" class="icon"> 
+                <!-- Texto del logotipo -->
+                <span class="logo-text">FLORA-NET</span>
+            </div>
+            <!-- Menú de navegación -->
+            <nav>
+                <!-- Checkbox oculto para alternar el menú de navegación en dispositivos móviles -->
+                <input class="hidden" type="checkbox" id="menuToggle">
+                <!-- Etiqueta que actúa como botón de menú, vinculada al checkbox -->
+                <label class="menu-btn" for="menuToggle"> 
+                    <!-- Líneas que componen el ícono del menú (hamburguesa) -->
+                    <div class="menu"></div> <!-- Línea superior del botón de menú -->
+                    <div class="menu"></div> <!-- Línea central del botón de menú -->
+                    <div class="menu"></div> <!-- Línea inferior del botón de menú -->
+                </label>
+                <!-- Contenedor de navegación, visible en pantallas pequeñas -->
+                <div class="nav-container">
+                    <!-- Lista de elementos de navegación -->
+                    <ul class="nav-tabs"> 
+                        <!-- Enlaces de navegación a las diferentes secciones del sitio -->
+                        <li class="nav-tab"><a href="inicio.html">Inicio</a></li> 
+                        <li class="nav-tab"><a href="chat_bot.html">ChatBot</a></li>
+                        <li class="nav-tab"><a href="regar.html">Regar</a></li>
+                        <li class="nav-tab"><a href="automatizar.html">Automatizar</a></li>
+                        <li class="nav-tab"><a href="contact.html">Contactamos</a></li>
+                        <li class="nav-tab"><a href="login.html">Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1 id="welcomeMessage"></h1>
+        <p>¿En qué puedo ayudarte hoy?</p>
+      <div class="consulta-container">
+          <pre id="resultadoConsulta"></pre> <!-- Muestra los resultados de la consulta -->
+      </div>
+  
+      <section class="buttons">
+          <button>
+              <i class="fas fa-lightbulb"></i>
+              Ideas de nombres de productos
+          </button>
+          <button>
+              <i class="fas fa-lightbulb"></i>
+              Ideas de nombres de productos
+          </button>
+          <button>
+              <i class="fas fa-lightbulb"></i>
+              Ideas de nombres de productos
+          </button>
+          <button>
+              <i class="fas fa-lightbulb"></i>
+              Ideas de nombres de productos
+          </button>
+      </section>
+  </main>
+  
+  <section>
+      <div class="input-container">
+          <textarea id="consulta" placeholder="Ingresa una instrucción aquí"></textarea>
+          <button class="send-btn" id="botonConsulta"><i class="fas fa-paper-plane"></i> Enviar</button>
+      </div>
+  </section>
+  
+
+    <footer>
+        <p>Revisores humanos analizan algunos chats guardados para mejorar la IA de Google. Para evitar esto puedes optar por futuras inhabilitaciones...</p>
+    </footer>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "@google/generative-ai": "https://esm.run/@google/generative-ai"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+        const clave = "AIzaSyAWjXwAj9IzPMkJiymAfNBpEq3uxnhGr70"; //  AIzaSyAWjXwAj9IzPMkJiymAfNBpEq3uxnhGr70 Copiar su clave de API
+
+        const genAI = new GoogleGenerativeAI(clave);
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+        document.querySelector("#botonConsulta").addEventListener("click", async () => {
+            desactivarBoton();
+            const consulta = document.querySelector("#consulta").value;
+            const resultadoConsulta = document.querySelector("#resultadoConsulta");
+            try {
+                const result = await model.generateContent(consulta);
+                const response = await result.response;
+                const text = response.text();
+                resultadoConsulta.innerHTML = text;
+            } catch (error) {
+                resultadoConsulta.innerHTML = 'Problemas en la consulta';
+            }
+            activarBoton();
+        });
+
+        function desactivarBoton() {
+            const botonConsulta = document.querySelector("#botonConsulta");
+            botonConsulta.disabled = true;
+            botonConsulta.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Consultando...';
+        }
+
+        function activarBoton() {
+            const botonConsulta = document.querySelector("#botonConsulta");
+            botonConsulta.disabled = false;
+            botonConsulta.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar';
+        }
+
+        // Función para extraer el parámetro de la URL y establecerlo en el textarea
+        function setConsultaFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const flor = urlParams.get('flor');
+            if (flor) {
+                document.querySelector("#consulta").value = `Información sobre ${flor}`;
+                document.querySelector("#botonConsulta").click(); // Opcional: consultar automáticamente
+            }
+        }
+        
+        // Llamar a la función al cargar la página
+        window.addEventListener('DOMContentLoaded', setConsultaFromURL);
+        window.addEventListener('load', () => {
+          const userName = localStorage.getItem('userName');
+          if (userName) {
+              document.getElementById('welcomeMessage').textContent = `Hola, ${userName}`;
+              document.getElementById('welcomeMessage').style.fontSize = '2.5em'; // Aumenta el tamaño del texto
+          }
+      });
+
+    </script>
+</body>
+
+</html>

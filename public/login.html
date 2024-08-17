@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Define la codificación de caracteres del documento como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura la vista para dispositivos móviles -->
+    <title>Login</title> <!-- Título de la página que aparece en la pestaña del navegador -->
+     <!-- Enlaza el archivo de estilos CSS para la página de inicio de sesión -->
+    <link rel="stylesheet" type="text/css" href="styles_Login.css">
+    <link rel="stylesheet" type="text/css" href="nav.css"> <!-- Enlaza el archivo de estilos CSS para la navegación -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3"></script> <!-- Incluye TensorFlow.js desde un CDN -->
+</head>
+<body>
+    <header>
+        <div class="nav-wrapper"> <!-- Contenedor principal para la barra de navegación -->
+            <div class="logo-container"> <!-- Contenedor para el logotipo y el texto del logotipo -->
+                <img src="/public/imagenes/logo.png" width="50" height="50" alt="" class="icon"> <!-- Imagen del logotipo -->
+                <span class="logo-text">FLORA-NET</span> <!-- Texto del logotipo -->
+            </div>
+            <nav>
+                <input class="hidden" type="checkbox" id="menuToggle"> <!-- Checkbox oculto para alternar el menú de navegación en dispositivos móviles -->
+                <label class="menu-btn" for="menuToggle"> <!-- Etiqueta que actúa como botón de menú, vinculada al checkbox -->
+                    <div class="menu"></div> <!-- Línea superior del botón de menú -->
+                    <div class="menu"></div> <!-- Línea central del botón de menú -->
+                    <div class="menu"></div> <!-- Línea inferior del botón de menú -->
+                </label>
+                <div class="nav-container"> <!-- Contenedor de navegación, visible en pantallas pequeñas -->
+                    <ul class="nav-tabs"> <!-- Lista de elementos de navegación -->
+                        <li class="nav-tab"><a href="inicio.html">Página Principal</a></li> <!-- Enlace a la página principal -->
+                        <!-- <li class="nav-tab"><a href="products.html">Products</a></li>  Enlace a la página de productos -->
+                        <!-- <li class="nav-tab"><a href="services.html">Services</a></li> Enlace a la página de servicios -->
+                        <!-- <li class="nav-tab"><a href="faq.html">FAQ</a></li>  Enlace a la página de preguntas frecuentes -->
+                        <li class="nav-tab"><a href="contact.html">Contactamos</a></li> <!-- Enlace a la página de contacto -->
+                        <li class="nav-tab"><a href="login.html">Iniciar Sesión</a></li> <!-- Enlace a la página de carreras -->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+    </header>
+
+    <section id="login-section">
+        <div class="background"></div> <!-- Elemento para el fondo de la página (probablemente para estilos adicionales) -->
+        <div class="background-texture"></div> <!-- Elemento para textura de fondo (probablemente para estilos adicionales) -->
+        <!-- Sección principal para el formulario de inicio de sesión y registro -->
+            <div class="container" id="container">
+                <div class="form-container sign-up-container">
+                    <!-- Contenedor para el formulario de registro -->
+                    <form id="signUpForm" action="/register" method="post">
+                        <h1>Crear cuenta</h1> <!-- Título del formulario de registro -->
+                        <span>Usa tu correo electrónico</span> <!-- Instrucción para el usuario -->
+                        <input type="text" id="signupUserName" name="username" placeholder="Nombre de usuario" required /> <!-- Campo para nombre de usuario -->
+                        <input type="email" id="signupEmail" name="email" placeholder="Email" required /> <!-- Campo para correo electrónico -->
+                        <input type="password" id="signupPassword" name="password" placeholder="Password" required /> <!-- Campo para contraseña -->
+                        <button type="submit">Crear cuenta</button> <!-- Botón para enviar el formulario de registro -->
+                        <p id="signupSuccessMessage" style="display: none; color: green;">Registro exitoso. Ya puedes iniciar sesión.</p> <!-- Mensaje de éxito para el registro -->
+                        <p id="errorDisplay" style="color: red;"></p> <!-- Contenedor para mostrar errores -->
+                    </form>
+                </div>
+
+                <div class="form-container sign-in-container">
+                    <!-- Contenedor para el formulario de inicio de sesión -->
+                    <form id="signInForm" action="/login" method="post">
+                        <h1>Iniciar sesión</h1> <!-- Título del formulario de inicio de sesión -->
+                        <span>Usa tu correo electronico</span> <!-- Instrucción para el usuario -->
+                        <input type="email" id="loginEmail" placeholder="Correo electronico" required /> <!-- Campo para correo electrónico -->
+                        <input type="password" id="loginPassword" placeholder="Password" required /> <!-- Campo para contraseña -->
+                        <button type="submit">Iniciar sesión</button> <!-- Botón para enviar el formulario de inicio de sesión -->
+                    </form>
+                </div>
+
+                <div class="overlay-container">
+                    <!-- Contenedor para la superposición que permite el cambio entre formularios -->
+                    <div class="overlay">
+                        <div class="overlay-panel overlay-left">
+                            <!-- Panel para mostrar cuando se muestra el formulario de inicio de sesión -->
+                            <h1>¡Bienvenido!</h1> <!-- Mensaje de bienvenida -->
+                            <div id="usernameDisplay"></div> <!-- Contenedor para mostrar el nombre de usuario -->
+                            <div class="logo1">
+                                <img src="imagenes/logo.jpg" alt="Logo" class="logo"> <!-- Imagen del logotipo en el panel -->
+                            </div>
+                            <h1>Unete a FLORA-NET</h1> <!-- Mensaje de invitación para unirse -->
+                            <button class="ghost" id="signIn">Iniciar sesión</button> <!-- Botón para cambiar al formulario de inicio de sesión -->
+                        </div>
+                        <div class="overlay-panel overlay-right">
+                            <!-- Panel para mostrar cuando se muestra el formulario de registro -->
+                            <h1>¡Bienvenido!</h1> <!-- Mensaje de bienvenida -->
+                            <div id="usernameDisplay"></div> <!-- Contenedor para mostrar el nombre de usuario -->
+                            <div class="logo1">
+                                <img src="imagenes/logo.jpg" alt="Logo" class="logo"> <!-- Imagen del logotipo en el panel -->
+                            </div>
+                            <h1>Unete a FLORA-NET</h1> <!-- Mensaje de invitación para unirse -->
+                            <p>Registrate y comienza </p> <!-- Instrucción para registrarse -->
+                            <button class="ghost" id="signUp">Registrate</button> <!-- Botón para cambiar al formulario de registro -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <footer>
+        <!-- Pie de página de la página web -->
+        <p>
+            FLORA-NET 2024
+        </p>
+    </footer> 
+    <script src="scripts/login.js" type="module"></script> <!-- Enlaza el archivo JavaScript para el inicio de sesión -->
+    <script src="scripts/register.js" type="module"></script> <!-- Enlaza el archivo JavaScript para el registro -->
+    <script src="scripts/inicio_s.js"></script> <!-- Enlaza el archivo JavaScript adicional -->
+</body>
+</html>

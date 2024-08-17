@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <!-- Establece la codificación de caracteres como UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura la vista para dispositivos móviles -->
+  <title>Ejemplo</title> <!-- Título de la página que aparece en la pestaña del navegador -->
+  <link rel="stylesheet" href="start.css"> <!-- Enlaza el archivo CSS para el estilo general -->
+  <link rel="stylesheet" href="nav.css"> <!-- Enlaza el archivo CSS para el estilo de la navegación -->
+</head>
+<body>
+  <div class="container"> <!-- Contenedor principal que envuelve todo el contenido -->
+    <header>
+      <div class="nav-wrapper"> <!-- Contenedor principal para la barra de navegación -->
+          <div class="logo-container"> <!-- Contenedor para el logotipo y el texto del logotipo -->
+              <img src="/public/imagenes/logo.png" width="50" height="50" alt="" class="icon"> <!-- Imagen del logotipo -->
+              <span class="logo-text">FLORA-NET</span> <!-- Texto del logotipo -->
+          </div>
+          <nav>
+              <input class="hidden" type="checkbox" id="menuToggle"> <!-- Checkbox oculto para alternar el menú de navegación en dispositivos móviles -->
+              <label class="menu-btn" for="menuToggle"> <!-- Etiqueta que actúa como botón de menú, vinculada al checkbox -->
+                  <div class="menu"></div> <!-- Línea superior del botón de menú -->
+                  <div class="menu"></div> <!-- Línea central del botón de menú -->
+                  <div class="menu"></div> <!-- Línea inferior del botón de menú -->
+              </label>
+              <div class="nav-container"> <!-- Contenedor de navegación, visible en pantallas pequeñas -->
+                  <ul class="nav-tabs"> <!-- Lista de elementos de navegación -->
+                    <li class="nav-tab"><a href="inicio.html">Inicio</a></li> 
+                    <li class="nav-tab"><a href="chat_bot.html">ChatBot</a></li>
+                    <li class="nav-tab"><a href="regar.html">Regar</a></li>
+                    <li class="nav-tab"><a href="automatizar.html">Automatizar</a></li>
+                    <li class="nav-tab"><a href="contact.html">Contactamos</a></li>
+                    <li class="nav-tab"><a href="login.html">Cerrar Sesión</a></li>
+                  </ul>
+              </div>
+          </nav>
+      </div>
+  </header>
+    <main class="main"> <!-- Contenedor principal para el contenido -->
+    
+      <section class="section section-muted"> <!-- Sección con fondo o estilo atenuado -->
+        <div class="logo-containers"> <!-- Contenedor para el logotipo y el título -->
+          <img src="imagenes/logo.png" alt="Logo" class="logo2"> <!-- Imagen del logotipo -->
+          <h1>FLORA-NET</h1> <!-- Título principal de la sección -->
+        </div>
+          <h1 id="welcomeMessage"></h1> <!-- Elemento para mostrar el mensaje de bienvenida -->
+      </section>
+      <section class="section"> <!-- Sección principal para las tarjetas -->
+          <div class="cards-container"> <!-- Contenedor para las tarjetas -->
+              <!-- Tarjeta para el chatbot -->
+              <div class="card" onclick="redirectToPage('chat_bot.html')">
+                  <div class="card-image"> <!-- Contenedor para la imagen de la tarjeta -->
+                      <img src="/public/imagenes/icon4.png" alt="Descripción de la imagen" class="card-img"> <!-- Imagen de la tarjeta -->
+                  </div>
+                  <p class="card-title">CHATBOT FLORANET</p> <!-- Título de la tarjeta -->
+                  <p class="card-description">Chatea con floranet, conoce y aprende más...</p> <!-- Descripción de la tarjeta -->
+                  <div class="card-footer"></div> <!-- Pie de la tarjeta (vacío en este caso) -->
+              </div>
+              
+              <!-- Tarjeta para la IA detectar flor -->
+              <div class="card" onclick="redirectToPage('prediccion.html')">
+                  <div class="card-image"> <!-- Contenedor para la imagen de la tarjeta -->
+                      <img src="/public/imagenes/icon2.png" alt="Descripción de la imagen" class="card-img"> <!-- Imagen de la tarjeta -->
+                  </div>
+                  <p class="card-title">IA DETECTAR FLOR</p> <!-- Título de la tarjeta -->
+                  <p class="card-description">AI reconoce qué flor es</p> <!-- Descripción de la tarjeta -->
+                  <div class="card-footer"> <!-- Pie de la tarjeta -->
+                  </div>
+              </div>
+              
+              <!-- Tarjeta para Calathea Orbifolia -->
+              <div class="card" onclick="redirectToPage('calathea-orbifolia.html')">
+                  <div class="card-image"> <!-- Contenedor para la imagen de la tarjeta -->
+                      <img src="/public/imagenes/icon1.png" alt="Descripción de la imagen" class="card-img"> <!-- Imagen de la tarjeta -->
+                  </div>
+                  <p class="card-title">REGAR PLANTAS</p> <!-- Título de la tarjeta -->
+                  <p class="card-description">Riega tu plata y conoce su temperatura y humedad</p> <!-- Descripción de la tarjeta -->
+                  <div class="card-footer"> <!-- Pie de la tarjeta -->
+                  </div>
+              </div>
+              
+              <!-- Tarjeta para Another Card -->
+              <div class="card" onclick="redirectToPage('another-page.html')">
+                  <div class="card-image"> <!-- Contenedor para la imagen de la tarjeta -->
+                      <img src="/public/imagenes/icon3.png" alt="Descripción de la imagen" class="card-img"> <!-- Imagen de la tarjeta -->
+                  </div>
+                  <p class="card-title">AUTOMATIZAR REGADO</p> <!-- Título de la tarjeta -->
+                  <p class="card-description">Roiego automatico, facilita regar tus plantas</p> <!-- Descripción de la tarjeta -->
+                  <div class="card-footer"> <!-- Pie de la tarjeta -->
+                  </div>
+              </div>
+          </div>
+        </section>
+        
+        <section class="section section-muted"> <!-- Sección con fondo o estilo atenuado -->
+          <h2 class="section-title">Información adicional</h2> <!-- Título de la sección -->
+          <p class="section-text">Esta sección puede contener información complementaria o una llamada a la acción.</p> <!-- Texto de la sección -->
+          <a href="#" class="button">Más información</a> <!-- Botón para más información -->
+        </section>
+    </main>
+    <footer class="footer"> <!-- Pie de página -->
+      <!-- Pie de página (sin cambios) -->
+    </footer>
+  </div>
+  <script>
+    function redirectToPage(url) {
+        window.location.href = url;
+    }
+    window.addEventListener('load', () => {
+      const userName = localStorage.getItem('userName');
+      if (userName) {
+          document.getElementById('welcomeMessage').textContent = `Bienvenid@, ${userName} `;
+          document.getElementById('welcomeMessage').style.fontSize = '2.5em'; // Aumenta el tamaño del texto
+      }
+  });
+  
+  
+  </script>
+</body>
+</html>

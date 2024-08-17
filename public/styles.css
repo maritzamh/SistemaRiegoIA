@@ -1,0 +1,424 @@
+/*IA*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    overflow: auto; /* Asegúrate de que el contenido pueda desplazarse */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.container {
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centrar el texto y los elementos */
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+.container > * {
+    margin: 0 auto;
+    display: block;
+}
+.logo-containers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espacio entre el logo y el h1 */
+    padding: 20px;
+}
+
+.logo2 {
+    max-width: 200px; /* Tamaño del logo */
+    height: auto;
+}
+
+h1 {
+    margin: 0 0 1rem 0; /* Establece márgenes para el título, con margen inferior de 1rem */
+    font-weight: 900; /* Define el peso de fuente como 900 (negrita) */
+    font-size: 4.5rem; /* Tamaño de fuente de 4.5rem */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    color: #164043; /* Color del texto */
+}
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.input-container {
+    margin-bottom: 20px;
+}
+
+.input-container input[type="file"] {
+    display: none;
+}
+
+
+.input-container label.btn {
+    display: block;
+    width: calc(50% - 5px);
+    padding: 10px;
+    margin: 10px auto; /* Centra el botón horizontalmente */
+    background-color: #888F4F;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    line-height: 30px;
+}
+
+.button-container {
+    text-align: center; /* Alinea el contenido del contenedor al centro */
+}
+
+.btn {
+    display: inline-block;
+    width: calc(50% - 5px); /* Establece el ancho al 50% del contenedor */
+    padding: 10px;
+    margin: 10px auto; /* Centra el botón horizontalmente */
+    background-color: #B3C2A0;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+}
+
+
+.btn:hover {
+    background-color: #F5D640;
+}
+
+#resultado {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+#resultado p {
+    margin: 5px 0;
+}
+
+.img-container {
+    text-align: center; /* Alinea la imagen al centro */
+}
+
+#imagen {
+    max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+    height: auto; /* Permite que la altura se ajuste automáticamente para mantener la relación de aspecto */
+}
+/*IA*/
+
+
+/* Estilos para las cartas */
+.container-cartas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Ajusta el espacio entre las cartas */
+    margin-top: 30px; 
+    margin-bottom: 80px; 
+
+}
+
+.card {
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    width: 200px;
+    height: 320px;
+    float: left;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.card-content {
+    padding: 10px;
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px;
+}
+
+.card-image {
+    width: 100%; /* Ajusta la anchura de la imagen para que se ajuste al contenedor de la carta */
+    height: auto; /* Permite que la altura de la imagen se ajuste automáticamente */
+    display: block; /* Asegura que la imagen sea un bloque */
+    border-bottom: 1px solid #ccc; /* Añade un borde inferior a la imagen */
+}
+
+
+/* Presentacion mensajes*/
+.presentacion {
+    background-color: #626e52; /* Color de fondo */
+    padding: 20px; /* Espaciado interno */
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.presentacion h2 {
+    color: #ffffff; /* Color del texto */
+    margin-bottom: 10px; /* Margen inferior */
+    text-align: center; /* Alineación del texto */
+}
+
+.presentacion h3 {
+    color: #ffffff; /* Color del texto */
+    margin-bottom: 20px; /* Margen inferior */
+    text-align: center; /* Alineación del texto */
+}
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 60px 0;
+}
+
+.section.bg-light {
+    background-color: #f5f5f5;
+}
+
+.two-column-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Espacio entre las dos columnas */
+    padding: 20px;
+}
+
+.column {
+    flex: 1;
+    padding: 10px;
+}
+
+.left-column {
+    
+        background-color: #f0f0f0; /* Color de fondo para la columna izquierda */
+        text-align: center; /* Centrar el texto y los elementos */
+        
+
+    
+}
+
+.right-column {
+    background-color: #f0f0f0; /* Color de fondo para la columna izquierda */
+    text-align: center; /* Centrar el texto y los elementos */
+          
+
+}
+.button-section {
+    padding: 60px 20px; /* 60px arriba y abajo, 20px a los lados */
+    text-align: center; /* Centra los botones horizontalmente */
+    background-color: #f5f5f5; /* Ejemplo de color de fondo para mejor visibilidad */
+    margin-top: 40px; /* Espacio arriba de la sección de botones */
+    margin-bottom: 40px; /* Espacio abajo de la sección de botones */
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espacio entre los botones */
+    flex-wrap: wrap; /* Permite que los botones se ajusten en líneas si el espacio es reducido */
+}
+
+.custom-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.custom-button:hover {
+    background-color: #0056b3;
+}
+#florNombre {
+    margin: 0 0 1rem 0; /* Establece márgenes para el título, con margen inferior de 1rem */
+    font-weight: 900; /* Define el peso de fuente como 900 (negrita) */
+    font-size: 4.5rem; /* Tamaño de fuente de 4.5rem */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    color: #97AF8F; /* Color del texto */
+}
+     /* Fuente elegante */
+/* From Uiverse.io by NelsonDJCR */ 
+.button2 {
+    display: flex; /* Usa Flexbox para alinear los elementos */
+    align-items: center; /* Alinea verticalmente la imagen y el texto */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    transition: all 0.2s ease-in;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    color: #090909;
+    padding: 0.7em 3.3em; /* Ajusta el espaciado dentro del botón */
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    border: 1px solid #e8e8e8;
+    box-shadow: 6px 6px 12px #c5c5c5,
+                -6px -6px 12px #ffffff;
+}
+
+.button-icon {
+    height: 50px; /* Ajusta el tamaño de la imagen */
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+
+  .button2:active {
+    color: #666;
+    box-shadow: inset 4px 4px 12px #c5c5c5,
+               inset -4px -4px 12px #ffffff;
+  }
+  
+  .button2:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.25);
+    top: 100%;
+    width: 140%;
+    height: 180%;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+  }
+  
+  .button2:after {
+    content: "";
+    position: absolute;
+    left: 55%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.45);
+    top: 180%;
+    width: 160%;
+    height: 190%;
+    background-color: #538D22;
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+  }
+  
+  .button2:hover {
+    color: #ffffff;
+    border: 1px solid #73A942;
+  }
+  
+  .button2:hover:before {
+    top: -35%;
+    background-color: #73A942;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+  }
+  
+  .button2:hover:after {
+    top: -45%;
+    background-color: #73A942;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+  }
+  /* Estilos para enlaces dentro del pie de página */
+footer a {
+    color: #f5d640; /* Color del enlace */
+    text-decoration: none; /* Sin subrayado */
+    transition: color 0.3s ease; /* Transición suave del color */
+}
+
+/* Estilos para enlaces cuando se pasa el cursor */
+footer a:hover {
+    color: #f0c93b; /* Cambia el color del enlace al pasar el cursor */
+}
+
+/* Estilos para la imagen dentro del pie de página */
+footer img {
+    max-width: 100px; /* Tamaño máximo de la imagen */
+    height: auto; /* Ajusta la altura automáticamente */
+    margin-top: 10px; /* Margen superior */
+}
+
+/* Estilos para asegurar que el diseño sea responsivo en pantallas pequeñas */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem; /* Reduce el tamaño de la fuente del título en pantallas pequeñas */
+    }
+
+    .container {
+        width: 90%; /* Aumenta el ancho del contenedor en pantallas pequeñas */
+    }
+
+    .logo2 {
+        max-width: 150px; /* Reduce el tamaño máximo del logo en pantallas pequeñas */
+    }
+
+    /* Ajusta los márgenes en la columna izquierda y derecha para mejorar el diseño en pantallas pequeñas */
+    .left-column, .right-column {
+        margin-bottom: 20px; /* Añade un margen inferior para separar las columnas */
+    }
+
+    .two-column-section {
+        flex-direction: column; /* Apila las columnas verticalmente en pantallas pequeñas */
+    }
+
+    .button-container {
+        flex-direction: column; /* Apila los botones verticalmente */
+    }
+
+    .input-container label.btn, .btn {
+        width: 100%; /* El ancho de los botones ocupa el 100% del contenedor */
+    }
+}
+
+/* Estilos adicionales para asegurar que el diseño sea responsivo en pantallas muy pequeñas */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.5rem; /* Reduce aún más el tamaño de la fuente del título en pantallas muy pequeñas */
+    }
+
+    .container {
+        padding: 15px; /* Reduce el padding interno del contenedor */
+    }
+
+    .logo2 {
+        max-width: 120px; /* Reduce el tamaño máximo del logo en pantallas muy pequeñas */
+    }
+
+    /* Ajusta los márgenes en la columna izquierda y derecha para mejorar el diseño en pantallas muy pequeñas */
+    .left-column, .right-column {
+        margin-bottom: 15px; /* Añade un margen inferior para separar las columnas */
+    }
+
+    .two-column-section {
+        gap: 15px; /* Reduce el espacio entre las columnas */
+    }
+
+    .button-container {
+        gap: 10px; /* Reduce el espacio entre los botones */
+    }
+
+    .custom-button {
+        font-size: 14px; /* Reduce el tamaño de la fuente de los botones personalizados */
+        padding: 8px 15px; /* Reduce el padding interno de los botones */
+    }
+}

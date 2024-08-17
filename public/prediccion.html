@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificador de flores</title>
+    <!-- Enlaza el archivo CSS principal para los estilos generales -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Enlaza el archivo CSS para la navegación específica -->
+    <link rel="stylesheet" href="nav.css">
+    <!-- Incluye la biblioteca TensorFlow.js desde un CDN para usarla en la predicción de imágenes -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3"></script>
+</head>
+<body>
+    <!-- Cabecera de la página -->
+    <header>
+        <div class="nav-wrapper"> <!-- Contenedor principal para la barra de navegación -->
+            <div class="logo-container"> <!-- Contenedor para el logotipo y el texto del logotipo -->
+                <!-- Imagen del logotipo -->
+                <img src="/public/imagenes/logo.png" width="50" height="50" alt="" class="icon"> 
+                <!-- Texto del logotipo -->
+                <span class="logo-text">FLORA-NET</span>
+            </div>
+            <!-- Menú de navegación -->
+            <nav>
+                <!-- Checkbox oculto para alternar el menú de navegación en dispositivos móviles -->
+                <input class="hidden" type="checkbox" id="menuToggle">
+                <!-- Etiqueta que actúa como botón de menú, vinculada al checkbox -->
+                <label class="menu-btn" for="menuToggle"> 
+                    <!-- Líneas que componen el ícono del menú (hamburguesa) -->
+                    <div class="menu"></div> <!-- Línea superior del botón de menú -->
+                    <div class="menu"></div> <!-- Línea central del botón de menú -->
+                    <div class="menu"></div> <!-- Línea inferior del botón de menú -->
+                </label>
+                <!-- Contenedor de navegación, visible en pantallas pequeñas -->
+                <div class="nav-container">
+                    <!-- Lista de elementos de navegación -->
+                    <ul class="nav-tabs"> 
+                        <!-- Enlaces de navegación a las diferentes secciones del sitio -->
+                        <li class="nav-tab"><a href="inicio.html">Inicio</a></li> 
+                        <li class="nav-tab"><a href="chat_bot.html">ChatBot</a></li>
+                        <li class="nav-tab"><a href="regar.html">Regar</a></li>
+                        <li class="nav-tab"><a href="automatizar.html">Automatizar</a></li>
+                        <li class="nav-tab"><a href="contact.html">Contactamos</a></li>
+                        <li class="nav-tab"><a href="login.html">Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section>
+        <!-- Logotipo y título principal de la página -->
+        <div class="logo-containers">
+            <img src="imagenes/logo.png" alt="Logo" class="logo2"> <!-- Logotipo grande -->
+            <h1>FLORA-NET</h1> <!-- Título principal -->
+        </div>
+    </section>
+    
+    <!-- Sección con dos columnas para la predicción y la información adicional -->
+    <section class="two-column-section">
+        <div class="column left-column">
+            <!-- Columna izquierda con la funcionalidad de predicción de imágenes -->
+            <h2>Predicción de Imagen</h2> <!-- Título de la sección de predicción -->
+            <div class="container">
+                <!-- Contenedor para el input de archivos -->
+                <div class="input-container">
+                    <!-- Input para seleccionar una imagen desde el dispositivo -->
+                    <input type="file" id="fileInput" accept="image/*">
+                    <!-- Botón para seleccionar la imagen -->
+                    <label for="fileInput" class="btn">Seleccionar Imagen</label>
+                </div>
+                <!-- Contenedor para mostrar la imagen seleccionada -->
+                <div class="img-container">
+                    <img id="imagen" src="" alt=""> <!-- Imagen seleccionada -->
+                </div>
+                <!-- Contenedor para el botón de predicción -->
+                <div class="button-container">
+                    <!-- Botón que llama a la función de predicción al hacer clic -->
+                    <button class="btn" onclick="predecirImagen()">Predecir</button>
+                </div>
+                <!-- Contenedor para mostrar el resultado de la predicción -->
+                <div id="resultado"></div>
+                <!-- Mostrar la categoría con la mayor probabilidad después de la predicción -->
+                <h2 id="categoriaMaxima"></h2> 
+            </div>
+        </div>
+        
+        <div class="column right-column">
+            <!-- Columna derecha para mostrar información adicional relacionada con la predicción -->
+            <div id="florNombre"></div> <!-- Contenedor para el nombre de la flor predicha -->
+            <div class="container">
+                <!-- Contenedor para mostrar la humedad actual -->
+                <div id="humedad" class="humidity-container">Humedad actual: Cargando...</div>
+                <!-- Contenedor para mostrar cualquier aviso adicional -->
+                <div id="aviso"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección con botones para más información -->
+    <section class="button-section">
+        <div class="button-container">
+            <!-- Botones para acceder a más información -->
+            <button id="irAlChat" class="button2">
+                <img src="/public/imagenes/icon4.png" alt="Icono" class="button-icon"> <!-- Ícono del botón -->
+                <span class="button-text">Saber Más ...</span> <!-- Texto del botón -->
+            </button>
+            <!-- Botones adicionales con íconos y texto similares -->
+            <button class="button2">
+                <img src="/public/imagenes/icon2.png" alt="Icono" class="button-icon">
+                <span id="irAlChat" class="button-text">Regar</span>
+            </button>
+            <button class="button2">
+                <img src="/public/imagenes/icon3.png" alt="Icono" class="button-icon">
+                <span class="button-text">Automatizar</span>
+            </button>
+            <button class="button2">
+                <img src="/public/imagenes/icon4.png" alt="Icono" class="button-icon">
+                <span class="button-text">Saber Más ...</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>FLORA-NET 2024</p> <!-- Información de copyright -->
+    </footer>
+
+    <!-- Enlace al archivo JavaScript que contiene las funciones de predicción -->
+    <script src="scripts/script.js"></script>
+</body>
+</html>

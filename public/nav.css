@@ -1,0 +1,283 @@
+/* Resetea los márgenes y establece el tamaño del viewport para ocupar toda la ventana del navegador */
+html, body {
+margin: 0; /* Elimina el margen predeterminado del navegador */
+height: 100vh; /* Establece la altura del cuerpo al 100% del viewport */
+width: 100vw; /* Establece el ancho del cuerpo al 100% del viewport */
+
+}
+
+/* Establece la fuente y el fondo del cuerpo */
+body {
+font: 100% system-ui, sans-serif; /* Define la fuente del cuerpo como System UI, con fuente secundaria sans-serif */
+ /* font-family: "Roboto", sans-serif;Define la fuente de texto del cuerpo */
+ /* background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);Aplica un gradiente de fondo de color */
+}
+
+/* Estilo para el título principal (h1) */
+
+
+/* Clase para centrar el texto */
+.center {
+text-align: center; /* Centra el texto dentro del contenedor */
+}
+
+/* Estilo para el contenedor de la navegación */
+.nav-wrapper {
+display: flex; /* Usa flexbox para alinear los elementos hijos */
+position: relative; /* Posiciona el contenedor de navegación relativamente */
+flex-direction: row; /* Organiza los elementos en fila */
+flex-wrap: nowrap; /* Impide que los elementos se envuelvan en varias líneas */
+align-items: center; /* Alinea los elementos verticalmente en el centro */
+justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
+margin: auto; /* Centra el contenedor horizontalmente */
+width: 90%; /* Define el ancho del contenedor como el 90% del ancho del viewport */
+height: 80px; /* Establece la altura del contenedor */
+border-radius: 0 0 15px 15px; /* Redondea las esquinas inferiores del contenedor */
+padding: 0 25px; /* Agrega espacio interno a los lados del contenedor */
+z-index: 2; /* Establece la profundidad del contenedor en el apilamiento de elementos */
+background: #fff; /* Establece el color de fondo del contenedor a blanco */
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Aplica una sombra sutil al contenedor */
+}
+
+/* Estilo para el contenedor del logo */
+.logo-container {
+display: flex; /* Usa flexbox para alinear el contenido del logo */
+justify-content: center; /* Centra el logo horizontalmente */
+align-items: center; /* Centra el logo verticalmente */
+}
+
+/* Estilo para el logo */
+.logo {
+height: 60px; /* Establece la altura del logo */
+}
+
+/* Estilo para la lista de pestañas de navegación */
+.nav-tabs {
+display: flex; /* Usa flexbox para alinear las pestañas de navegación */
+font-weight: 600; /* Define el peso de la fuente como semi-negrita */
+font-size: 18px; /* Establece el tamaño de la fuente */
+list-style: none; /* Elimina los puntos de la lista */
+margin: 0; /* Elimina el margen de la lista */
+padding: 0; /* Elimina el padding de la lista */
+}
+
+/* Estilo para cada pestaña de navegación */
+.nav-tab {
+position: relative; /* Posiciona cada pestaña relativamente */
+}
+
+/* Estilo para los enlaces dentro de las pestañas de navegación */
+.nav-tab a {
+display: block; /* Hace que el enlace sea un bloque para ocupar toda la pestaña */
+padding: 15px 25px; /* Agrega espacio interno a los enlaces */
+text-decoration: none; /* Elimina el subrayado de los enlaces */
+color: #333; /* Establece el color del texto del enlace */
+transition: color 0.3s ease, background-color 0.3s ease; /* Agrega una transición suave al color y al fondo */
+border-radius: 5px; /* Redondea las esquinas de los enlaces */
+}
+
+/* Estilo para el estado hover de los enlaces en las pestañas de navegación */
+.nav-tab a:hover {
+color: #fff; /* Cambia el color del texto del enlace al pasar el cursor */
+background-color: #639767; /* Cambia el color de fondo del enlace al pasar el cursor */
+}
+
+/* Estilo para el subrayado de los enlaces */
+.nav-tab a::after {
+content: ""; /* Define el contenido del pseudo-elemento como vacío */
+position: absolute; /* Posiciona el subrayado absolutamente en relación con el enlace */
+left: 50%; /* Posiciona el subrayado en el centro horizontal del enlace */
+bottom: 0; /* Posiciona el subrayado en la parte inferior del enlace */
+width: 0; /* Inicialmente el ancho del subrayado es 0 */
+height: 2px; /* Define la altura del subrayado */
+background: #cdd358; /* Establece el color del subrayado */
+transition: width 0.3s ease, left 0.3s ease; /* Agrega una transición suave al ancho y la posición del subrayado */
+}
+
+/* Estilo para el estado hover del subrayado de los enlaces */
+.nav-tab a:hover::after {
+width: 100%; /* Expande el ancho del subrayado al pasar el cursor */
+left: 0; /* Ajusta la posición del subrayado al inicio del enlace */
+}
+
+/* Estilo para el botón del menú */
+.menu-btn {
+position: relative; /* Posiciona el botón relativamente */
+display: block; /* Hace que el botón sea un bloque para ocupar el espacio disponible */
+margin: 0; /* Elimina el margen del botón */
+width: 20px; /* Define el ancho del botón */
+height: 15px; /* Define la altura del botón */
+cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+z-index: 2; /* Establece la profundidad del botón en el apilamiento de elementos */
+padding: 10px; /* Agrega espacio interno al botón */
+border-radius: 10px; /* Redondea las esquinas del botón */
+}
+
+/* Estilo para las líneas dentro del botón del menú */
+.menu-btn .menu {
+display: block; /* Hace que cada línea sea un bloque para ocupar todo el espacio disponible */
+width: 100%; /* Define el ancho de las líneas al 100% del botón */
+height: 2px; /* Define la altura de las líneas */
+}
+
+/* Estilo para el estado hover de las líneas dentro del botón del menú */
+.menu-btn:hover .menu {
+background: #764ba2; /* Cambia el color de las líneas al pasar el cursor sobre el botón del menú */
+}
+
+/* Estilo para elementos ocultos */
+.hidden {
+display: none; /* Oculta los elementos con esta clase */
+}
+
+/* Estilo para el contenedor de navegación en pantallas pequeñas */
+@media screen and (max-width: 800px) {
+.nav-container {
+    position: fixed; /* Posiciona el contenedor de navegación de manera fija */
+    display: none; /* Inicialmente oculta el contenedor de navegación */
+    overflow-y: auto; /* Habilita el desplazamiento vertical si es necesario */
+    z-index: -1; /* Establece la profundidad del contenedor en el apilamiento de elementos */
+    top: 0; /* Posiciona el contenedor en la parte superior de la ventana */
+    right: 0; /* Posiciona el contenedor en el lado derecho de la ventana */
+    width: 280px; /* Define el ancho del contenedor */
+    height: 100%; /* Define la altura del contenedor al 100% del viewport */
+    background: #fff; /* Establece el color de fondo del contenedor a blanco */
+    box-shadow: -1px 0 2px rgba(0, 0, 0, 0.2); /* Aplica una sombra sutil al contenedor */
+}
+
+.nav-tabs {
+    flex-direction: column; /* Organiza las pestañas en una columna */
+    align-items: flex-end; /* Alinea las pestañas a la derecha */
+    margin-top: 80px; /* Agrega un margen superior para separar las pestañas del encabezado */
+    width: 100%; /* Define el ancho de las pestañas al 100% del contenedor */
+}
+
+.nav-tab:not(:last-child) {
+    padding: 20px 25px; /* Agrega espacio interno a las pestañas excepto la última */
+    margin: 0; /* Elimina el margen de las pestañas excepto la última */
+    border-right: unset; /* Elimina el borde derecho de las pestañas excepto la última */
+    border-bottom: 1px solid #f5f5f5; /* Agrega un borde inferior a las pestañas */
+}
+
+.nav-tab:last-child {
+    padding: 15px 25px; /* Agrega espacio interno a la última pestaña */
+}
+
+.menu-btn {
+    position: relative; /* Posiciona el botón relativamente */
+}
+
+/* Oculta elementos con la clase .hidden */
+.hidden {
+    display: none; /* Elimina el elemento del flujo del documento y lo oculta de la vista */
+  }
+  
+  /* Estilos específicos para pantallas con un ancho máximo de 800px */
+  @media screen and (max-width: 800px) {
+    /* Estilo para el contenedor de navegación en pantallas pequeñas */
+    .nav-container {
+      position: fixed; /* Fija el contenedor de navegación en la pantalla */
+      display: none; /* Inicialmente oculta el contenedor de navegación */
+      overflow-y: auto; /* Permite el desplazamiento vertical si el contenido desborda */
+      z-index: -1; /* Establece una profundidad baja para el contenedor en el apilamiento de elementos */
+      top: 0; /* Posiciona el contenedor en la parte superior de la ventana */
+      right: 0; /* Posiciona el contenedor en el lado derecho de la ventana */
+      width: 280px; /* Define el ancho del contenedor */
+      height: 100%; /* Define la altura del contenedor al 100% del viewport */
+      background: #fff; /* Establece el color de fondo del contenedor a blanco */
+      box-shadow: -1px 0 2px rgba(0, 0, 0, 0.2); /* Aplica una sombra sutil al contenedor */
+    }
+  
+    /* Estilo para la lista de pestañas de navegación en pantallas pequeñas */
+    .nav-tabs {
+      flex-direction: column; /* Organiza las pestañas en una columna en lugar de fila */
+      align-items: flex-end; /* Alinea las pestañas a la derecha dentro del contenedor */
+      margin-top: 80px; /* Agrega un margen superior para separar las pestañas del encabezado */
+      width: 100%; /* Define el ancho de las pestañas al 100% del contenedor */
+    }
+  
+    /* Estilo para todas las pestañas de navegación excepto la última */
+    .nav-tab:not(:last-child) {
+      padding: 20px 25px; /* Agrega espacio interno a las pestañas */
+      margin: 0; /* Elimina el margen de las pestañas */
+      border-right: unset; /* Elimina el borde derecho de las pestañas */
+      border-bottom: 1px solid #f5f5f5; /* Agrega un borde inferior sutil a las pestañas */
+    }
+  
+    /* Estilo para la última pestaña de navegación */
+    .nav-tab:last-child {
+      padding: 15px 25px; /* Agrega espacio interno específico a la última pestaña */
+    }
+  
+    /* Estilo para el botón de menú */
+    .menu-btn {
+      position: relative; /* Posiciona el botón relativamente */
+      display: block; /* Hace que el botón sea un bloque para ocupar el espacio disponible */
+      margin: 0; /* Elimina el margen del botón */
+      width: 20px; /* Define el ancho del botón */
+      height: 15px; /* Define la altura del botón */
+      cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+      z-index: 2; /* Establece una profundidad alta para el botón en el apilamiento de elementos */
+      padding: 10px; /* Agrega espacio interno al botón */
+      border-radius: 10px; /* Redondea las esquinas del botón */
+    }
+  
+    /* Estilo para las líneas dentro del botón de menú */
+    .menu-btn .menu {
+      display: block; /* Hace que cada línea sea un bloque para ocupar el espacio disponible */
+      width: 100%; /* Define el ancho de las líneas al 100% del botón */
+      height: 2px; /* Define la altura de las líneas */
+      border-radius: 2px; /* Redondea las esquinas de las líneas */
+      background: #111; /* Establece el color de las líneas */
+    }
+  
+    /* Estilo para la segunda línea dentro del botón de menú */
+    .menu-btn .menu:nth-child(2) {
+      margin-top: 4px; /* Agrega un margen superior entre las líneas */
+      opacity: 1; /* Establece la opacidad completa para la línea */
+    }
+  
+    /* Estilo para la tercera línea dentro del botón de menú */
+    .menu-btn .menu:nth-child(3) {
+      margin-top: 4px; /* Agrega un margen superior entre las líneas */
+    }
+  
+    /* Estilo para el botón de menú cuando el checkbox #menuToggle está marcado */
+    #menuToggle:checked + .menu-btn .menu {
+      transition: transform 0.2s ease; /* Agrega una transición suave para la transformación */
+    }
+  
+    /* Estilo para la primera línea dentro del botón de menú cuando el checkbox está marcado */
+    #menuToggle:checked + .menu-btn .menu:nth-child(1) {
+      transform: translate3d(0, 6px, 0) rotate(45deg); /* Rota y desplaza la línea para crear una forma cruzada */
+    }
+  
+    /* Estilo para la segunda línea dentro del botón de menú cuando el checkbox está marcado */
+    #menuToggle:checked + .menu-btn .menu:nth-child(2) {
+      transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0); /* Rota y desplaza la línea para ocultarla */
+      opacity: 0; /* Establece la opacidad a 0 para ocultar la línea */
+    }
+  
+    /* Estilo para la tercera línea dentro del botón de menú cuando el checkbox está marcado */
+    #menuToggle:checked + .menu-btn .menu:nth-child(3) {
+      transform: translate3d(0, -6px, 0) rotate(-45deg); /* Rota y desplaza la línea para completar la forma cruzada */
+    }
+  
+    /* Estilo para el contenedor de navegación cuando el checkbox #menuToggle está marcado */
+    #menuToggle:checked ~ .nav-container {
+      z-index: 1; /* Establece una profundidad alta para el contenedor de navegación */
+      display: flex; /* Muestra el contenedor de navegación */
+      animation: menu-slide-left 0.3s ease; /* Aplica una animación para deslizar el contenedor desde la derecha */
+    }
+  
+    /* Define la animación para deslizar el contenedor de navegación desde la derecha */
+    @keyframes menu-slide-left {
+      0% {
+        transform: translateX(200px); /* Inicia la animación con el contenedor desplazado a 200px hacia la derecha */
+      }
+      to {
+        transform: translateX(0); /* Finaliza la animación con el contenedor en su posición original */
+      }
+    }
+  }
+}  

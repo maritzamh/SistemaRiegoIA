@@ -1,0 +1,408 @@
+:root {
+    /* Variables de color */
+    --blue: #478b3ee6;
+    --pink: rgba(255, 131, 195, 0.4);
+    --white: rgba(255, 255, 255, 0.9);
+}
+
+  
+/* Estilo para el fondo de la página */
+.background {
+    background-image: url(https://images.unsplash.com/photo-1554692760-4b7e52978fb6?ixlib=rb-1.2.1&ixid=eyJhcBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=8);
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-color: #252746; /* Color de fondo en caso de que la imagen no cargue */
+    background-position: center; /* Centra la imagen en el fondo */
+    width: 100vw; /* Ancho completo de la ventana */
+    height: 100vh; /* Altura completa de la ventana */
+    position: absolute; /* Posiciona el elemento absolutamente */
+    z-index: 0; /* Coloca el fondo por detrás de otros elementos */
+    top: 0;
+    left: 0;
+}
+
+/* Estilo para la textura del fondo */
+.background-texture {
+    background: linear-gradient(
+        to top,
+        rgba(175, 225, 125, 0.9),
+        rgba(255, 255, 255, 0.9)
+    ); /* Gradiente de fondo que va de abajo hacia arriba */
+    background-size: cover; /* Asegura que el gradiente cubra todo el fondo */
+    width: 100vw; /* Ancho completo de la ventana */
+    height: 100vh; /* Altura completa de la ventana */
+    position: absolute; /* Posiciona el elemento absolutamente */
+    z-index: 0; /* Coloca la textura por detrás de otros elementos */
+    top: 0;
+    left: 0;
+}
+
+/* Estilo para los encabezados de nivel 1 */
+h1 {
+    font-weight: bold; /* Negrita */
+    margin: 0; /* Elimina el margen por defecto */
+}
+
+/* Estilo para los encabezados de nivel 2 */
+h2 {
+    text-align: center; /* Centra el texto */
+}
+
+/* Estilo para los párrafos */
+p {
+    font-size: 14px; /* Tamaño de fuente pequeño */
+    font-weight: 100; /* Peso de fuente ligero */
+    line-height: 20px; /* Altura de línea para mejor legibilidad */
+    letter-spacing: 0.5px; /* Espaciado entre letras */
+    margin: 20px 0 30px; /* Margen superior e inferior */
+}
+
+/* Estilo para los botones */
+button {
+    border-radius: 20px; /* Bordes redondeados */
+    border: 1px solid #888F4F; /* Borde del botón */
+    background-color: #888F4F; /* Color de fondo del botón */
+    color: #FFFFFF; /* Color del texto del botón */
+    font-size: 12px; /* Tamaño de fuente del botón */
+    font-weight: bold; /* Negrita */
+    padding: 12px 45px; /* Espaciado interno del botón */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    transition: transform 80ms ease-in; /* Transición de escala al hacer clic */
+}
+
+button:active {
+    transform: scale(0.95); /* Efecto de reducción al hacer clic */
+}
+
+button:focus {
+    outline: none; /* Elimina el borde de enfoque */
+}
+
+button.ghost {
+    background-color: transparent; /* Fondo transparente */
+    border-color: #FFFFFF; /* Borde blanco */
+}
+
+/* Estilo para los formularios */
+form {
+    background-color: #FFFFFF; /* Fondo blanco para el formulario */
+    display: flex; /* Usa Flexbox para el diseño */
+    align-items: center; /* Alinea verticalmente */
+    justify-content: center; /* Alinea horizontalmente */
+    flex-direction: column; /* Coloca los elementos en columna */
+    padding: 0 50px; /* Espaciado interno horizontal */
+    height: 100%; /* Altura completa del contenedor padre */
+    text-align: center; /* Centra el texto */
+}
+
+/* Estilo para los campos de entrada */
+input {
+    background-color: #eee; /* Color de fondo claro */
+    border: none; /* Elimina el borde */
+    padding: 12px 15px; /* Espaciado interno */
+    margin: 8px 0; /* Margen superior e inferior */
+    width: 100%; /* Ancho completo del contenedor */
+}
+
+/* Estilo para el contenedor principal */
+.container {
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+                0 10px 10px rgba(0,0,0,0.22); /* Sombra del contenedor */
+    position: relative; /* Posiciona el contenedor en relación a su posición normal */
+    overflow: hidden; /* Oculta el contenido que se desborda */
+    width: 768px; /* Ancho fijo del contenedor */
+    max-width: 100%; /* Ancho máximo del 100% del contenedor padre */
+    min-height: 480px; /* Altura mínima del contenedor */
+    padding: 20px; /* Espaciado interno */
+}
+
+/* Estilo para los contenedores de formulario dentro de .container */
+.form-container {
+    position: absolute; /* Posiciona el contenedor de formulario absolutamente */
+    top: 0;
+    height: 100%; /* Altura completa del contenedor padre */
+    transition: all 0.6s ease-in-out; /* Transición suave para el cambio de estado */
+}
+
+/* Estilo para el contenedor de inicio de sesión */
+.sign-in-container {
+    left: 0; /* Posiciona a la izquierda */
+    width: 50%; /* Ancho del 50% */
+    z-index: 2; /* Nivel de apilamiento */
+}
+
+/* Cambio de posición cuando el panel está activo */
+.container.right-panel-active .sign-in-container {
+    transform: translateX(100%); /* Desplaza hacia la derecha */
+}
+
+/* Estilo para el contenedor de registro */
+.sign-up-container {
+    left: 0; /* Posiciona a la izquierda */
+    width: 50%; /* Ancho del 50% */
+    opacity: 0; /* Inicialmente invisible */
+    z-index: 1; /* Nivel de apilamiento */
+}
+
+/* Cambio de posición cuando el panel está activo */
+.container.right-panel-active .sign-up-container {
+    transform: translateX(100%); /* Desplaza hacia la derecha */
+    opacity: 1; /* Hace visible */
+    z-index: 5; /* Nivel de apilamiento */
+    animation: show 0.6s; /* Animación para la aparición */
+}
+
+/* Animación para la aparición */
+@keyframes show {
+    0%, 49.99% {
+        opacity: 0; /* Inicialmente invisible */
+        z-index: 1; /* Nivel de apilamiento */
+    }
+    50%, 100% {
+        opacity: 1; /* Hace visible */
+        z-index: 5; /* Nivel de apilamiento */
+    }
+}
+
+/* Estilo para el contenedor de superposición */
+.overlay-container {
+    position: absolute; /* Posiciona el contenedor de superposición absolutamente */
+    top: 0;
+    left: 50%; /* Posiciona a la mitad de la ventana */
+    width: 50%; /* Ancho del 50% */
+    height: 100%; /* Altura completa del contenedor padre */
+    overflow: hidden; /* Oculta el contenido que se desborda */
+    transition: transform 0.6s ease-in-out; /* Transición suave para el cambio de estado */
+    z-index: 100; /* Nivel de apilamiento alto */
+     /* Elimina los márgenes predeterminados del cuerpo del documento */
+     /* Alinea verticalmente el contenido en el centro del cuerpo del documento */
+     align-items: center;
+}
+
+/* Cambio de posición cuando el panel está activo */
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%); /* Desplaza hacia la izquierda */
+}
+
+/* Estilo para la superposición */
+.overlay {
+    background: #7D6C1E; /* Color de fondo */
+    background: -webkit-linear-gradient(to right, #7D6C1E, #7D6C1E); /* Gradiente de fondo para navegadores Webkit */
+    background: linear-gradient(to right, #7D6C1E, #7D6C1E); /* Gradiente de fondo */
+    background-repeat: no-repeat; /* Evita que se repita */
+    background-size: cover; /* Asegura que el gradiente cubra todo el fondo */
+    background-position: 0 0; /* Posiciona el gradiente */
+    color: #FFFFFF; /* Color del texto */
+    position: relative; /* Posiciona en relación a su posición normal */
+    left: -100%; /* Posiciona a la izquierda */
+    height: 100%; /* Altura completa del contenedor padre */
+    width: 200%; /* Ancho del 200% para cubrir el contenedor */
+    transform: translateX(0); /* Posición inicial */
+    transition: transform 0.6s ease-in-out; /* Transición suave para el cambio de estado */
+    align-items: center;
+}
+
+/* Cambio de posición cuando el panel está activo */
+.container.right-panel-active .overlay {
+    transform: translateX(50%); /* Desplaza hacia la derecha */
+}
+
+/* Estilo para el panel de superposición */
+.overlay-panel {
+    position: absolute; /* Posiciona absolutamente */
+    display: flex; /* Usa Flexbox para el diseño */
+    align-items: center; /* Alinea verticalmente */
+    justify-content: center; /* Alinea horizontalmente */
+    flex-direction: column; /* Coloca los elementos en columna */
+    padding: 0 40px; /* Espaciado interno horizontal */
+    text-align: center; /* Centra el texto */
+    top: 0;
+    height: 100%; /* Altura completa del contenedor padre */
+    width: 50%; /* Ancho del 50% */
+    transform: translateX(0); /* Posición inicial */
+    transition: transform 0.6s ease-in-out; /* Transición suave para el cambio de estado */
+}
+
+/* Estilo para el panel de superposición a la izquierda */
+.overlay-left {
+    transform: translateX(-20%); /* Desplaza hacia la izquierda */
+}
+
+/* Cambio de posición cuando el panel está activo */
+.container.right-panel-active .overlay-left {
+    transform: translateX(0); /* Posiciona en el centro */
+}
+
+/* Estilo para el panel de superposición a la derecha */
+.overlay-right {
+    right: 0; /* Posiciona a la derecha */
+    transform: translateX(0); /* Posición inicial */
+}
+
+/* Cambio de posición cuando el panel está activo */
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%); /* Desplaza hacia la derecha */
+}
+
+/* Estilo para los contenedores de redes sociales */
+.social-container {
+    margin: 20px 0; /* Margen superior e inferior */
+}
+
+/* Estilo para los enlaces de redes sociales */
+.social-container a {
+    border: 1px solid #DDDDDD; /* Borde de los enlaces */
+    border-radius: 50%; /* Bordes redondeados para hacerlos circulares */
+    display: inline-flex; /* Usa Flexbox para el diseño */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    margin: 0 5px; /* Margen horizontal */
+    height: 40px; /* Altura del enlace */
+    width: 40px; /* Ancho del enlace */
+}
+
+/* Estilo para las tarjetas */
+.card {
+    position: relative; /* Posiciona en relación a su posición normal */
+    width: 300px; /* Ancho fijo */
+    height: 350px; /* Altura fija */
+    background: #043A52; /* Fondo de la tarjeta */
+    margin: 0 20px; /* Margen horizontal */
+    border-radius: 4px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(12, 223, 163, 0.2); /* Sombra de la tarjeta */
+    margin-bottom: 50px; /* Margen inferior */
+}
+
+/* Estilo para el pseudo-elemento antes de la tarjeta */
+.card:before,
+.card:after {
+    content: ""; /* Crea un pseudo-elemento vacío */
+    position: absolute; /* Posiciona absolutamente */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ancho completo del contenedor */
+    height: 100%; /* Altura completa del contenedor */
+    border-radius: 4px; /* Bordes redondeados */
+    background: #043A52; /* Fondo de la tarjeta */
+    transition: 0.5s; /* Transición suave */
+    z-index: -1; /* Coloca el pseudo-elemento detrás del contenido */
+}
+
+/* Estilo para el pseudo-elemento antes de la tarjeta al pasar el ratón por encima */
+.card:hover:before {
+    transform: rotate(20deg); /* Rotea el elemento */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2); /* Aumenta la sombra */
+}
+
+/* Estilo para el pseudo-elemento después de la tarjeta al pasar el ratón por encima */
+.card:hover:after {
+    transform: rotate(10deg); /* Rotea el elemento */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2); /* Aumenta la sombra */
+}
+
+/* Estilo para la caja de imagen dentro de la tarjeta */
+.card .imgBx {
+    position: absolute; /* Posiciona absolutamente */
+    top: 10px; /* Espacio desde la parte superior */
+    left: 10px; /* Espacio desde la izquierda */
+    bottom: 10px; /* Espacio desde la parte inferior */
+    right: 10px; /* Espacio desde la derecha */
+    background: #222; /* Fondo oscuro */
+    transition: 0.5s; /* Transición suave */
+    z-index: 1; /* Nivel de apilamiento */
+}
+
+/* Estilo para la caja de imagen dentro de la tarjeta al pasar el ratón por encima */
+.card:hover .imgBx {
+    bottom: 80px; /* Desplaza la caja de imagen hacia arriba */
+}
+
+/* Estilo para las imágenes dentro de la caja de imagen */
+.card .imgBx img {
+    position: absolute; /* Posiciona absolutamente */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ancho completo del contenedor */
+    height: 100%; /* Altura completa del contenedor */
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor */
+}
+
+/* Estilo para los detalles de la tarjeta */
+.card .details {
+    position: absolute; /* Posiciona absolutamente */
+    left: 10px; /* Espacio desde la izquierda */
+    right: 10px; /* Espacio desde la derecha */
+    bottom: 10px; /* Espacio desde la parte inferior */
+    height: 60px; /* Altura fija */
+    text-align: center; /* Centra el texto */
+}
+
+/* Estilo para el encabezado dentro de los detalles de la tarjeta */
+.card .details h2 {
+    margin: 0; /* Elimina el margen por defecto */
+    padding: 0; /* Elimina el espaciado por defecto */
+    font-weight: 600; /* Peso de fuente medio */
+    font-size: 20px; /* Tamaño de fuente grande */
+    color: #83C2C7; /* Color del texto */
+    text-transform: uppercase; /* Texto en mayúsculas */
+}
+
+/* Estilo para el span dentro del encabezado de detalles de la tarjeta */
+.card .details h2 span {
+    font-weight: 500; /* Peso de fuente medio */
+    font-size: 16px; /* Tamaño de fuente medio */
+    color: #50A182; /* Color del texto */
+    display: block; /* Bloquea el elemento */
+    margin-top: 5px; /* Margen superior */
+}
+
+/* Estilo para los botones de redes sociales dentro de la tarjeta */
+.card .social-buttons {
+    display: flex; /* Usa Flexbox para el diseño */
+    justify-content: space-around; /* Espacia los elementos */
+    width: 100%; /* Ancho completo del contenedor */
+    margin-top: 10px; /* Margen superior */
+    margin-bottom: 30px; /* Margen inferior */
+}
+
+/* Estilo para los enlaces de botones sociales dentro de la tarjeta */
+.card .social-buttons a {
+    display: inline-block; /* Muestra como bloque en línea */
+    width: 40px; /* Ancho fijo */
+    height: 40px; /* Altura fija */
+    border-radius: 50%; /* Bordes redondeados para hacerlos circulares */
+    overflow: hidden; /* Oculta el desbordamiento */
+}
+
+/* Estilo para las imágenes dentro de los botones sociales */
+.card .social-buttons img {
+    width: 100%; /* Ancho completo del contenedor */
+    height: 100%; /* Altura completa del contenedor */
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor */
+}
+
+/* Estilo para el logotipo en la clase logo1 */
+.logo1 img {
+    width: 150px; /* Ancho fijo */
+    height: auto; /* Altura automática para mantener la proporción */
+    border-radius: 50%; /* Hace que la imagen sea circular */
+}
+
+/* Estilo para la sección de inicio de sesión */
+#login-section {
+    display: flex; /* Usa Flexbox para el diseño */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    min-height: calc(100vh - 100px); /* Altura mínima ajustada para la sección */
+    padding: 5px; /* Espaciado interno */
+    margin-top: 20px; /* Espacio superior */
+    text-align: center; /* Centra el texto */
+}
+
+/* Estilo para todos los hijos directos de #login-section */
+#login-section > * {
+    display: block; /* Asegura que los elementos sean de tipo bloque para el centrado efectivo */
+}
