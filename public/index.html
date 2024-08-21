@@ -1,34 +1,82 @@
+<!-- Pagina de unicio en donde se muestra el logotipo una pequeña descripcion y ademas el dirige al inicio de sesión
+ - falta la descripcion y dirigir el nav -->
 
+<!doctype html> <!-- Declara el tipo de documento como HTML5 -->
+<html lang="en"> <!-- Abre el elemento HTML con el idioma establecido en inglés -->
+
+<head>
+    <meta charset="utf-8"> <!-- Define la codificación de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Asegura que el contenido sea responsive en dispositivos móviles -->
+    <link rel="stylesheet" href="/public/Css/nav.css"> <!-- Enlaza el archivo CSS para estilos de la barra de navegación -->
+    <link rel="stylesheet" href="/public/Css/inicio.css"> <!-- Enlaza otro archivo CSS para estilos adicionales -->
+    <title>Responsive Navbar using HTML and CSS only with Source Code - @code.scientist x @codingtorque</title> <!-- Define el título de la página, que aparece en la pestaña del navegador -->
+</head>
+
+<body>
+    <header>
+        <div class="nav-wrapper"> <!-- Contenedor principal para la barra de navegación -->
+            <div class="logo-container"> <!-- Contenedor para el logotipo y el texto del logotipo -->
+                <img src="/public/imagenes/logo.png" width="50" height="50" alt="" class="icon"> <!-- Imagen del logotipo -->
+                <span class="logo-text">FLORA-NET</span> <!-- Texto del logotipo -->
+            </div>
+            <nav>
+                <input class="hidden" type="checkbox" id="menuToggle"> <!-- Checkbox oculto para alternar el menú de navegación en dispositivos móviles -->
+                <label class="menu-btn" for="menuToggle"> <!-- Etiqueta que actúa como botón de menú, vinculada al checkbox -->
+                    <div class="menu"></div> <!-- Línea superior del botón de menú -->
+                    <div class="menu"></div> <!-- Línea central del botón de menú -->
+                    <div class="menu"></div> <!-- Línea inferior del botón de menú -->
+                </label>
+                <div class="nav-container"> <!-- Contenedor de navegación, visible en pantallas pequeñas -->
+                    <ul class="nav-tabs"> <!-- Lista de elementos de navegación -->
+                        <li class="nav-tab"><a href="index.html">Página Principal</a></li> <!-- Enlace a la página principal -->
+                        <!-- <li class="nav-tab"><a href="products.html">Products</a></li>  Enlace a la página de productos -->
+                        <!-- <li class="nav-tab"><a href="services.html">Services</a></li> Enlace a la página de servicios -->
+                        <!-- <li class="nav-tab"><a href="faq.html">FAQ</a></li>  Enlace a la página de preguntas frecuentes -->
+                        <li class="nav-tab"><a href="contact.html">Contactamos</a></li> <!-- Enlace a la página de contacto -->
+                        <li class="nav-tab"><a href="login.html">Iniciar Sesión</a></li> <!-- Enlace a la página de carreras -->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="center"> <!-- Contenedor para centrar el contenido principal -->
+        <h1>Resize window to 800px to toggle menu</h1> <!-- Título principal de la página -->
+        <div class="background"></div> <!-- Elemento para el fondo de la página (probablemente para estilos adicionales) -->
+        <div class="background-texture"></div> <!-- Elemento para textura de fondo (probablemente para estilos adicionales) -->
+
+        <div class="content-wrapper"> <!-- Contenedor principal para el contenido -->
+            <div class="left-content"> <!-- Contenedor para el contenido de la izquierda -->
+                <p class="stay-home">Conoce !!</p> <!-- Texto introductorio -->
+                <h1>FLORA-NET</h1> <!-- Título principal de la sección -->
+                <p class="para">That's what we need right now. Lorem ipsum dolor sit amet consectetur,
+                    adipisicing elit. Aliquam, corporis.</p> <!-- Texto descriptivo adicional -->
+                <button onclick="window.location.href='login.html';">Iniciar Sesión</button> <!-- Botón que redirige a la página de inicio de sesión -->
+            </div>
+
+            <div class="image-container"> <!-- Contenedor para la imagen SVG -->
+                <svg width="60vw" height="60vh" viewBox="0 0 728 728" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Drawing"> <!-- Grupo para contener los elementos SVG -->
+                        <g id="Ellipse 1" filter="url(#filter0_b)">
+                            <!-- Círculo más grande -->
+                            <ellipse cx="364" cy="364" rx="300" ry="300" fill="#478b3ee6" fill-opacity="0.39" style="mix-blend-mode: overlay;" />
+                            <ellipse cx="364" cy="364" rx="300" ry="300" fill="url(#paint0_angular)" />
+                        </g>
+                        <g id="in-drawing">
+                            <!-- Centrar la imagen PNG dentro del círculo -->
+                            <image href="/public/imagenes/logo.png" x="164" y="164" height="600" width="600" />
+                            <!-- Texto centrado dentro del círculo -->
+                            <text x="50%" y="90%" text-anchor="middle" fill="#3b365e" font-size="24" font-weight="bold">
+                                FLORA-NETs
+                            </text>
+                        </g>
+                    </g>
+                </svg>
         
-        <div class="container-cartas">
-            <div class="card">
-                <h2>Margarita</h2>
-                <img src="imagenes/Margarita.jpg" alt="Margarita" class="card-image">
-                <p>Las margaritas son conocidas por su aspecto simple y encantador, con pétalos blancos y un centro amarillo.
-                    Son símbolos de inocencia y pureza en muchas culturas.</p>
-            </div>
-            <div class="card">
-                <h2>Diente de león</h2>
-                <img src="imagenes/DienteDeLeon.jpg" alt="Imagen 1" class="card-image">
-                <p>Los dientes de león son conocidos por sus flores amarillas brillantes y sus hojas dentadas distintivas.
-                    Sus hojas son comestibles y ricas en vitaminas y minerales.</p>
-            </div>
-            <div class="card">
-                <h2>Rosa</h2>
-                <img src="imagenes/Rosa.jpg" alt="Imagen 1" class="card-image">
-                <p>Las rosas son posiblemente las flores más reconocibles y populares en el mundo.
-                    Son símbolos de amor y belleza en muchas culturas y se han utilizado en la poesía, el arte y la literatura a lo largo de la historia.</p>
-            </div>
-            <div class="card">
-                <h2>Girasol</h2>
-                <img src="imagenes/Girasol.jpg" alt="Imagen 1" class="card-image">
-                <p>Los girasoles son conocidos por sus grandes cabezas florales amarillas que siguen el movimiento del sol a lo largo del día.</p>
-            </div>
-            <div class="card">
-                <h2>Tulipán</h2>
-                <img src="imagenes/Tulipan.jpg" alt="Imagen 1" class="card-image">
-                <p>Los tulipanes son conocidos por sus flores en forma de copa y colores vibrantes.Los tulipanes vienen en una amplia variedad de colores y patrones, lo que los convierte en una opción popular.</p>
             </div>
         </div>
-    
-       
+    </div>
+</body>
+
+</html>
+

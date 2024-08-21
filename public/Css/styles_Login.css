@@ -5,7 +5,6 @@
     --white: rgba(255, 255, 255, 0.9);
 }
 
-  
 /* Estilo para el fondo de la página */
 .background {
     background-image: url(https://images.unsplash.com/photo-1554692760-4b7e52978fb6?ixlib=rb-1.2.1&ixid=eyJhcBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=8);
@@ -40,7 +39,10 @@
 /* Estilo para los encabezados de nivel 1 */
 h1 {
     font-weight: bold; /* Negrita */
+    font-size: 34px; /* Tamaño de fuente pequeño */
     margin: 0; /* Elimina el margen por defecto */
+    text-align: center; /* Centra el texto */
+    letter-spacing: 0.5px; /* Espaciado entre letras */
 }
 
 /* Estilo para los encabezados de nivel 2 */
@@ -117,6 +119,7 @@ input {
     max-width: 100%; /* Ancho máximo del 100% del contenedor padre */
     min-height: 480px; /* Altura mínima del contenedor */
     padding: 20px; /* Espaciado interno */
+    
 }
 
 /* Estilo para los contenedores de formulario dentro de .container */
@@ -189,9 +192,17 @@ input {
 
 /* Estilo para la superposición */
 .overlay {
-    background: #7D6C1E; /* Color de fondo */
-    background: -webkit-linear-gradient(to right, #7D6C1E, #7D6C1E); /* Gradiente de fondo para navegadores Webkit */
-    background: linear-gradient(to right, #7D6C1E, #7D6C1E); /* Gradiente de fondo */
+    background-image: linear-gradient(rgba(108, 237, 108, 0.5), rgba(0, 128, 0, 0.5)), /* Color verde semitransparente */
+                      url(https://images.unsplash.com/photo-1554692760-4b7e52978fb6?ixlib=rb-1.2.1&ixid=eyJhcBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=8); /* Imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    z-index: 0; /* Mantiene la imagen detrás del contenido */
+    width: 100vw; /* Ancho del contenedor igual al ancho de la ventana de visualización */
+    height: 100vh; /* Altura del contenedor igual a la altura de la ventana de visualización */
+    position: absolute; /* Posiciona el contenedor de textura en la parte supesrior del fondo */
+    z-index: 0; /* Establece el índice de z para que esté detrás de otros elementos */
+    top: 0; /* Alinea el contenedor en la parte superior */
+    left: 0; /* Alinea el contenedor a la izquierda */
     background-repeat: no-repeat; /* Evita que se repita */
     background-size: cover; /* Asegura que el gradiente cubra todo el fondo */
     background-position: 0 0; /* Posiciona el gradiente */
@@ -202,7 +213,6 @@ input {
     width: 200%; /* Ancho del 200% para cubrir el contenedor */
     transform: translateX(0); /* Posición inicial */
     transition: transform 0.6s ease-in-out; /* Transición suave para el cambio de estado */
-    align-items: center;
 }
 
 /* Cambio de posición cuando el panel está activo */
@@ -217,8 +227,7 @@ input {
     align-items: center; /* Alinea verticalmente */
     justify-content: center; /* Alinea horizontalmente */
     flex-direction: column; /* Coloca los elementos en columna */
-    padding: 0 40px; /* Espaciado interno horizontal */
-    text-align: center; /* Centra el texto */
+    padding: 0 10px; /* Espaciado interno horizontal */
     top: 0;
     height: 100%; /* Altura completa del contenedor padre */
     width: 50%; /* Ancho del 50% */
@@ -229,6 +238,8 @@ input {
 /* Estilo para el panel de superposición a la izquierda */
 .overlay-left {
     transform: translateX(-20%); /* Desplaza hacia la izquierda */
+    text-align: center; /* Centra el texto */
+    align-items: center;
 }
 
 /* Cambio de posición cuando el panel está activo */
@@ -240,6 +251,7 @@ input {
 .overlay-right {
     right: 0; /* Posiciona a la derecha */
     transform: translateX(0); /* Posición inicial */
+
 }
 
 /* Cambio de posición cuando el panel está activo */

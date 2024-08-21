@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interfaz de Bienvenida</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="chat_bot.css"> <!-- Asegúrate de tener este archivo con tu estilo -->
-    <link rel="stylesheet" href="nav.css"> <!-- Asegúrate de tener este archivo con tu estilo -->
+    <link rel="stylesheet" href="/public/Css/chat_bot.css"> <!-- Asegúrate de tener este archivo con tu estilo -->
+    <link rel="stylesheet" href="/public/Css/nav.css"> <!-- Asegúrate de tener este archivo con tu estilo -->
 </head>
 
 <body>
@@ -35,12 +35,12 @@
                     <!-- Lista de elementos de navegación -->
                     <ul class="nav-tabs"> 
                         <!-- Enlaces de navegación a las diferentes secciones del sitio -->
-                        <li class="nav-tab"><a href="inicio.html">Inicio</a></li> 
-                        <li class="nav-tab"><a href="chat_bot.html">ChatBot</a></li>
+                        <li class="nav-tab"><a href="start.html">Inicio</a></li> 
+                        <li class="nav-tab"><a href="prediccion.html">Predicción</a></li>
                         <li class="nav-tab"><a href="regar.html">Regar</a></li>
                         <li class="nav-tab"><a href="automatizar.html">Automatizar</a></li>
                         <li class="nav-tab"><a href="contact.html">Contactamos</a></li>
-                        <li class="nav-tab"><a href="login.html">Cerrar Sesión</a></li>
+                        <li class="nav-tab"><a href="index.html">Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </nav>
@@ -49,36 +49,51 @@
     <main>
         <h1 id="welcomeMessage"></h1>
         <p>¿En qué puedo ayudarte hoy?</p>
-      <div class="consulta-container">
-          <pre id="resultadoConsulta"></pre> <!-- Muestra los resultados de la consulta -->
-      </div>
+        <div class="consulta-container">
+            <div class="historial">
+                <h3>Historial de Búsqueda</h3>
+                <ul id="historialBusqueda">
+                    <!-- Aquí se agregarán los elementos del historial de búsqueda -->
+                </ul>
+            </div>
+            <div class="resultado">
+                <h3>Resultado de la Consulta</h3>
+                <pre id="resultadoConsulta"></pre> <!-- Muestra los resultados de la consulta -->
+            </div>
+        </div>
+        
   
-      <section class="buttons">
-          <button>
-              <i class="fas fa-lightbulb"></i>
-              Ideas de nombres de productos
-          </button>
-          <button>
-              <i class="fas fa-lightbulb"></i>
-              Ideas de nombres de productos
-          </button>
-          <button>
-              <i class="fas fa-lightbulb"></i>
-              Ideas de nombres de productos
-          </button>
-          <button>
-              <i class="fas fa-lightbulb"></i>
-              Ideas de nombres de productos
-          </button>
-      </section>
+        <section class="buttons">
+            <button id="button1" data-question="¿Cada Cuándo la debo regar?">
+                <i class="fas fa-lightbulb"></i>
+                ¿Cada Cuándo la debo regar?
+            </button>
+            <button id="button2" data-question="Flores más bonitas del mumdo">
+                <i class="fas fa-lightbulb"></i>
+                Flores más bonitas del mumdo
+            </button>
+            <button id="button3" data-question="Significado de las flores">
+                <i class="fas fa-lightbulb"></i>
+                Significado de las flores
+            </button>
+            <button id="button4" data-question="¿Qué tipo de flores debo regalar dependiendo la  situación ?">
+                <i class="fas fa-lightbulb"></i>
+                ¿Qué tipo de flores debo regalar dependiendo la  situación ?
+            </button>
+        </section>
+        
   </main>
+  <!-- Nueva sección para mostrar mensajes de error -->
+    <section class="error-message" style="display: none;">
+    <p id="errorConsulta">Hubo un error. Por favor, inténtalo de nuevo más tarde.</p>
+    </section>
+    <section>
+        <div class="input-container">
+            <textarea id="consulta" placeholder="Ingresa una instrucción aquí"></textarea>
+            <button class="send-btn" id="botonConsulta"><i class="fas fa-paper-plane"></i> Enviar</button>
+        </div>
+    </section>
   
-  <section>
-      <div class="input-container">
-          <textarea id="consulta" placeholder="Ingresa una instrucción aquí"></textarea>
-          <button class="send-btn" id="botonConsulta"><i class="fas fa-paper-plane"></i> Enviar</button>
-      </div>
-  </section>
   
 
     <footer>
@@ -94,60 +109,111 @@
     </script>
 
     <script type="module">
+        // Importa la clase GoogleGenerativeAI desde el paquete @google/generative-ai
         import { GoogleGenerativeAI } from "@google/generative-ai";
-        const clave = "AIzaSyAWjXwAj9IzPMkJiymAfNBpEq3uxnhGr70"; //  AIzaSyAWjXwAj9IzPMkJiymAfNBpEq3uxnhGr70 Copiar su clave de API
 
+        // Inicializa la instancia de GoogleGenerativeAI con la clave API proporcionada
+        const clave = ""; // Inserta tu clave API aquí
         const genAI = new GoogleGenerativeAI(clave);
+
+        // Obtiene el modelo generativo especificado, en este caso "gemini-pro"
         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
+        // Agrega un evento de clic al botón de consulta
         document.querySelector("#botonConsulta").addEventListener("click", async () => {
-            desactivarBoton();
+            // Obtiene el valor del textarea de consulta
             const consulta = document.querySelector("#consulta").value;
+            
+            // Obtiene los elementos del DOM donde se mostrarán los resultados y los errores
             const resultadoConsulta = document.querySelector("#resultadoConsulta");
+            const errorConsulta = document.querySelector("#errorConsulta");
+            const errorSection = document.querySelector(".error-message"); // Asegúrate de que esta clase exista en tu HTML
+            const botonConsulta = document.querySelector("#botonConsulta");
+
+            // Desactiva el botón de consulta y muestra el estado de "Consultando..."
+            desactivarBoton();
+
             try {
+                // Envía la consulta al modelo generativo y espera la respuesta
                 const result = await model.generateContent(consulta);
                 const response = await result.response;
-                const text = response.text();
-                resultadoConsulta.innerHTML = text;
+                const text = await response.text(); // Obtiene el texto completo de la respuesta
+
+                // Muestra el texto formateado en el elemento resultadoConsulta
+                resultadoConsulta.innerHTML = formatearTexto(text); // Formatea el texto para que las negritas se apliquen correctamente
+
+                // Limpia el contenido del textarea después de recibir la respuesta
+                document.querySelector("#consulta").value = '';
             } catch (error) {
-                resultadoConsulta.innerHTML = 'Problemas en la consulta';
+                // Maneja cualquier error que ocurra durante la consulta
+                resultadoConsulta.innerHTML = ''; // Limpia cualquier resultado anterior
+                errorConsulta.textContent = 'Hubo un problema con la consulta. Por favor, inténtalo de nuevo más tarde.'; // Muestra el mensaje de error
+                errorSection.style.display = 'block'; // Muestra la sección de error
+
+                // Limpia el contenido del textarea
+                document.querySelector("#consulta").value = '';
+
+                // Oculta la sección de error después de 4 segundos y reactiva el botón de consulta
+                setTimeout(() => {
+                    errorSection.style.display = 'none'; // Oculta la sección de error
+                    activarBoton(); // Reactiva el botón de consulta
+                }, 4000); // 4000 milisegundos = 4 segundos
+
+                // Muestra el error en la consola para depuración
+                console.error("Error al realizar la consulta:", error);
+            } finally {
+                // Asegúrate de que el botón vuelva a ser funcional independientemente de si hubo un error
+                activarBoton();
             }
-            activarBoton();
         });
 
+        // Función para desactivar el botón de consulta y mostrar el estado de "Consultando..."
         function desactivarBoton() {
             const botonConsulta = document.querySelector("#botonConsulta");
-            botonConsulta.disabled = true;
-            botonConsulta.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Consultando...';
+            botonConsulta.disabled = true; // Desactiva el botón
+            botonConsulta.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Consultando...'; // Muestra el ícono de carga
         }
 
+        // Función para activar el botón de consulta y volver a su estado normal
         function activarBoton() {
             const botonConsulta = document.querySelector("#botonConsulta");
-            botonConsulta.disabled = false;
-            botonConsulta.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar';
+            botonConsulta.disabled = false; // Reactiva el botón
+            botonConsulta.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar'; // Muestra el ícono de avión de papel
         }
 
-        // Función para extraer el parámetro de la URL y establecerlo en el textarea
+        // Función para formatear el texto reemplazando los asteriscos con negritas HTML
+        function formatearTexto(texto) {
+            return texto.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Reemplaza los asteriscos con la etiqueta <strong>
+        }
+
+        // Función para extraer el parámetro 'flor' de la URL y establecerlo en el textarea
         function setConsultaFromURL() {
             const urlParams = new URLSearchParams(window.location.search);
             const flor = urlParams.get('flor');
             if (flor) {
+                // Establece el valor del textarea con la consulta extraída de la URL
                 document.querySelector("#consulta").value = `Información sobre ${flor}`;
-                document.querySelector("#botonConsulta").click(); // Opcional: consultar automáticamente
+                // Opcional: envía automáticamente la consulta
+                document.querySelector("#botonConsulta").click(); 
             }
         }
-        
-        // Llamar a la función al cargar la página
-        window.addEventListener('DOMContentLoaded', setConsultaFromURL);
-        window.addEventListener('load', () => {
-          const userName = localStorage.getItem('userName');
-          if (userName) {
-              document.getElementById('welcomeMessage').textContent = `Hola, ${userName}`;
-              document.getElementById('welcomeMessage').style.fontSize = '2.5em'; // Aumenta el tamaño del texto
-          }
-      });
+
+        // Llama a las funciones necesarias cuando el contenido de la página esté completamente cargado
+        window.addEventListener('DOMContentLoaded', () => {
+            setConsultaFromURL(); // Establece la consulta desde la URL si existe
+
+            // Obtiene el nombre de usuario almacenado en el localStorage y lo muestra en el mensaje de bienvenida
+            const userName = localStorage.getItem('userName');
+            if (userName) {
+                const welcomeMessage = document.getElementById('welcomeMessage');
+                welcomeMessage.textContent = `Hola, ${userName}`; // Muestra el saludo con el nombre de usuario
+                welcomeMessage.style.fontSize = '2.5em'; // Aumenta el tamaño del texto del saludo
+            }
+        });
+
 
     </script>
+    
 </body>
 
 </html>
