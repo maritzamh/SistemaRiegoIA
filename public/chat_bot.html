@@ -14,28 +14,19 @@
     <header>
         <div class="nav-wrapper"> <!-- Contenedor principal para la barra de navegación -->
             <div class="logo-container"> <!-- Contenedor para el logotipo y el texto del logotipo -->
-                <!-- Imagen del logotipo -->
-                <img src="/public/imagenes/logo.png" width="50" height="50" alt="" class="icon"> 
-                <!-- Texto del logotipo -->
-                <span class="logo-text">FLORA-NET</span>
+                <img src="/public/imagenes/logo.png" width="50" height="50" alt="" class="icon"> <!-- Imagen del logotipo -->
+                <span class="logo-text">FLORA-NET</span> <!-- Texto del logotipo -->
             </div>
-            <!-- Menú de navegación -->
             <nav>
-                <!-- Checkbox oculto para alternar el menú de navegación en dispositivos móviles -->
-                <input class="hidden" type="checkbox" id="menuToggle">
-                <!-- Etiqueta que actúa como botón de menú, vinculada al checkbox -->
-                <label class="menu-btn" for="menuToggle"> 
-                    <!-- Líneas que componen el ícono del menú (hamburguesa) -->
+                <input class="hidden" type="checkbox" id="menuToggle"> <!-- Checkbox oculto para alternar el menú de navegación en dispositivos móviles -->
+                <label class="menu-btn" for="menuToggle"> <!-- Etiqueta que actúa como botón de menú, vinculada al checkbox -->
                     <div class="menu"></div> <!-- Línea superior del botón de menú -->
                     <div class="menu"></div> <!-- Línea central del botón de menú -->
                     <div class="menu"></div> <!-- Línea inferior del botón de menú -->
                 </label>
-                <!-- Contenedor de navegación, visible en pantallas pequeñas -->
-                <div class="nav-container">
-                    <!-- Lista de elementos de navegación -->
-                    <ul class="nav-tabs"> 
-                        <!-- Enlaces de navegación a las diferentes secciones del sitio -->
-                        <li class="nav-tab"><a href="start.html">Inicio</a></li> 
+                <div class="nav-container"> <!-- Contenedor de navegación, visible en pantallas pequeñas -->
+                    <ul class="nav-tabs">
+                        <li class="nav-tab"><a href="start.html">Inicio</a></li>
                         <li class="nav-tab"><a href="prediccion.html">Predicción</a></li>
                         <li class="nav-tab"><a href="regar.html">Regar</a></li>
                         <li class="nav-tab"><a href="automatizar.html">Automatizar</a></li>
@@ -46,6 +37,7 @@
             </nav>
         </div>
     </header>
+    
     <main>
         <h1 id="welcomeMessage"></h1>
         <p>¿En qué puedo ayudarte hoy?</p>
@@ -61,40 +53,37 @@
                 <pre id="resultadoConsulta"></pre> <!-- Muestra los resultados de la consulta -->
             </div>
         </div>
-        
-  
+
         <section class="buttons">
             <button id="button1" data-question="¿Cada Cuándo la debo regar?">
                 <i class="fas fa-lightbulb"></i>
                 ¿Cada Cuándo la debo regar?
             </button>
-            <button id="button2" data-question="Flores más bonitas del mumdo">
+            <button id="button2" data-question="Flores más bonitas del mundo">
                 <i class="fas fa-lightbulb"></i>
-                Flores más bonitas del mumdo
+                Flores más bonitas del mundo
             </button>
             <button id="button3" data-question="Significado de las flores">
                 <i class="fas fa-lightbulb"></i>
                 Significado de las flores
             </button>
-            <button id="button4" data-question="¿Qué tipo de flores debo regalar dependiendo la  situación ?">
+            <button id="button4" data-question="¿Qué tipo de flores debo regalar dependiendo la situación?">
                 <i class="fas fa-lightbulb"></i>
-                ¿Qué tipo de flores debo regalar dependiendo la  situación ?
+                ¿Qué tipo de flores debo regalar dependiendo la situación?
             </button>
         </section>
-        
-  </main>
-  <!-- Nueva sección para mostrar mensajes de error -->
+    </main>
+
     <section class="error-message" style="display: none;">
-    <p id="errorConsulta">Hubo un error. Por favor, inténtalo de nuevo más tarde.</p>
+        <p id="errorConsulta">Hubo un error. Por favor, inténtalo de nuevo más tarde.</p>
     </section>
+
     <section>
         <div class="input-container">
             <textarea id="consulta" placeholder="Ingresa una instrucción aquí"></textarea>
             <button class="send-btn" id="botonConsulta"><i class="fas fa-paper-plane"></i> Enviar</button>
         </div>
     </section>
-  
-  
 
     <footer>
         <p>Revisores humanos analizan algunos chats guardados para mejorar la IA de Google. Para evitar esto puedes optar por futuras inhabilitaciones...</p>
@@ -109,81 +98,88 @@
     </script>
 
     <script type="module">
-        // Importa la clase GoogleGenerativeAI desde el paquete @google/generative-ai
         import { GoogleGenerativeAI } from "@google/generative-ai";
 
-        // Inicializa la instancia de GoogleGenerativeAI con la clave API proporcionada
         const clave = ""; // Inserta tu clave API aquí
         const genAI = new GoogleGenerativeAI(clave);
-
-        // Obtiene el modelo generativo especificado, en este caso "gemini-pro"
         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-        // Agrega un evento de clic al botón de consulta
-        document.querySelector("#botonConsulta").addEventListener("click", async () => {
-            // Obtiene el valor del textarea de consulta
-            const consulta = document.querySelector("#consulta").value;
-            
-            // Obtiene los elementos del DOM donde se mostrarán los resultados y los errores
+        // Función para manejar la consulta al chatbot, reutilizable por cualquier botón
+        async function realizarConsulta(consulta) {
             const resultadoConsulta = document.querySelector("#resultadoConsulta");
             const errorConsulta = document.querySelector("#errorConsulta");
-            const errorSection = document.querySelector(".error-message"); // Asegúrate de que esta clase exista en tu HTML
-            const botonConsulta = document.querySelector("#botonConsulta");
+            const errorSection = document.querySelector(".error-message");
 
-            // Desactiva el botón de consulta y muestra el estado de "Consultando..."
             desactivarBoton();
 
             try {
-                // Envía la consulta al modelo generativo y espera la respuesta
                 const result = await model.generateContent(consulta);
                 const response = await result.response;
-                const text = await response.text(); // Obtiene el texto completo de la respuesta
+                const text = await response.text();
 
-                // Muestra el texto formateado en el elemento resultadoConsulta
-                resultadoConsulta.innerHTML = formatearTexto(text); // Formatea el texto para que las negritas se apliquen correctamente
-
-                // Limpia el contenido del textarea después de recibir la respuesta
-                document.querySelector("#consulta").value = '';
+                resultadoConsulta.innerHTML = formatearTexto(text);
+                document.querySelector("#consulta").value = ''; // Limpia el contenido del textarea después de recibir la respuesta
             } catch (error) {
-                // Maneja cualquier error que ocurra durante la consulta
-                resultadoConsulta.innerHTML = ''; // Limpia cualquier resultado anterior
-                errorConsulta.textContent = 'Hubo un problema con la consulta. Por favor, inténtalo de nuevo más tarde.'; // Muestra el mensaje de error
-                errorSection.style.display = 'block'; // Muestra la sección de error
+                resultadoConsulta.innerHTML = '';
+                errorConsulta.textContent = 'Hubo un problema con la consulta. Por favor, inténtalo de nuevo más tarde.';
+                errorSection.style.display = 'block';
 
-                // Limpia el contenido del textarea
                 document.querySelector("#consulta").value = '';
 
-                // Oculta la sección de error después de 4 segundos y reactiva el botón de consulta
                 setTimeout(() => {
-                    errorSection.style.display = 'none'; // Oculta la sección de error
-                    activarBoton(); // Reactiva el botón de consulta
-                }, 4000); // 4000 milisegundos = 4 segundos
+                    errorSection.style.display = 'none';
+                }, 4000);
 
-                // Muestra el error en la consola para depuración
                 console.error("Error al realizar la consulta:", error);
             } finally {
-                // Asegúrate de que el botón vuelva a ser funcional independientemente de si hubo un error
                 activarBoton();
             }
+        }
+
+        // Añadir eventos de clic a los botones de opciones predefinidas
+        document.querySelector("#button1").addEventListener("click", () => {
+            const consulta = document.querySelector("#button1").getAttribute("data-question");
+            realizarConsulta(consulta);
+        });
+
+        document.querySelector("#button2").addEventListener("click", () => {
+            const consulta = document.querySelector("#button2").getAttribute("data-question");
+            realizarConsulta(consulta);
+        });
+
+        document.querySelector("#button3").addEventListener("click", () => {
+            const consulta = document.querySelector("#button3").getAttribute("data-question");
+            realizarConsulta(consulta);
+        });
+
+        document.querySelector("#button4").addEventListener("click", () => {
+            const consulta = document.querySelector("#button4").getAttribute("data-question");
+            realizarConsulta(consulta);
+        });
+
+        // Manejador para el botón de consulta principal
+        document.querySelector("#botonConsulta").addEventListener("click", () => {
+            const consulta = document.querySelector("#consulta").value;
+            realizarConsulta(consulta);
         });
 
         // Función para desactivar el botón de consulta y mostrar el estado de "Consultando..."
         function desactivarBoton() {
             const botonConsulta = document.querySelector("#botonConsulta");
-            botonConsulta.disabled = true; // Desactiva el botón
-            botonConsulta.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Consultando...'; // Muestra el ícono de carga
+            botonConsulta.disabled = true;
+            botonConsulta.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Consultando...';
         }
 
         // Función para activar el botón de consulta y volver a su estado normal
         function activarBoton() {
             const botonConsulta = document.querySelector("#botonConsulta");
-            botonConsulta.disabled = false; // Reactiva el botón
-            botonConsulta.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar'; // Muestra el ícono de avión de papel
+            botonConsulta.disabled = false;
+            botonConsulta.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar';
         }
 
         // Función para formatear el texto reemplazando los asteriscos con negritas HTML
         function formatearTexto(texto) {
-            return texto.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Reemplaza los asteriscos con la etiqueta <strong>
+            return texto.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         }
 
         // Función para extraer el parámetro 'flor' de la URL y establecerlo en el textarea
@@ -191,29 +187,23 @@
             const urlParams = new URLSearchParams(window.location.search);
             const flor = urlParams.get('flor');
             if (flor) {
-                // Establece el valor del textarea con la consulta extraída de la URL
                 document.querySelector("#consulta").value = `Información sobre ${flor}`;
-                // Opcional: envía automáticamente la consulta
-                document.querySelector("#botonConsulta").click(); 
+                document.querySelector("#botonConsulta").click();
             }
         }
 
-        // Llama a las funciones necesarias cuando el contenido de la página esté completamente cargado
+        // Configuración inicial al cargar la página
         window.addEventListener('DOMContentLoaded', () => {
-            setConsultaFromURL(); // Establece la consulta desde la URL si existe
+            setConsultaFromURL();
 
-            // Obtiene el nombre de usuario almacenado en el localStorage y lo muestra en el mensaje de bienvenida
             const userName = localStorage.getItem('userName');
             if (userName) {
                 const welcomeMessage = document.getElementById('welcomeMessage');
-                welcomeMessage.textContent = `Hola, ${userName}`; // Muestra el saludo con el nombre de usuario
-                welcomeMessage.style.fontSize = '2.5em'; // Aumenta el tamaño del texto del saludo
+                welcomeMessage.textContent = `Hola, ${userName}`;
+                welcomeMessage.style.fontSize = '2.5em';
             }
         });
-
-
     </script>
-    
 </body>
 
 </html>
