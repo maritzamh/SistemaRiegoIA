@@ -339,6 +339,30 @@ h1 {
     background-color: #73A942;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
   }
+
+  .card_pre {
+    display: none; /* Oculta todas las tarjetas por defecto */
+}
+
+.card_pre.active {
+    display: block; /* Muestra solo la tarjeta activa */
+}
+
+/* Asegúrate de que las tarjetas se ajusten correctamente dentro de su contenedor */
+.container-cartas {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card_pre {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
   /* Estilos para enlaces dentro del pie de página */
 footer a {
     color: #f5d640; /* Color del enlace */

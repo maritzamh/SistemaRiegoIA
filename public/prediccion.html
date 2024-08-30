@@ -39,9 +39,9 @@
                         <!-- Enlaces de navegación a las diferentes secciones del sitio -->
                         <li class="nav-tab"><a href="start.html">Inicio</a></li> 
                         <li class="nav-tab"><a href="chat_bot.html">ChatBot</a></li>
-                        <li class="nav-tab"><a href="regar.html">Regar</a></li>
+                        <li class="nav-tab"><a href="regar.html">Datos del Cultivo</a></li>
                         <li class="nav-tab"><a href="automatizar.html">Automatizar</a></li>
-                        <li class="nav-tab"><a href="contact.html">Contactamos</a></li>
+                        <li class="nav-tab"><a href="abouts.html">Contactamos</a></li>
                         <li class="nav-tab"><a href="index.html">Cerrar Sesión</a></li>
                     </ul>
                 </div>
@@ -88,13 +88,43 @@
         
         <div class="column right-column">
             <!-- Columna derecha para mostrar información adicional relacionada con la predicción -->
-            <div id="florNombre"></div> <!-- Contenedor para el nombre de la flor predicha -->
-            <div class="container">
-                <!-- Contenedor para mostrar la humedad actual -->
-                <div id="humedad" class="humidity-container">Humedad actual: Cargando...</div>
-                <!-- Contenedor para mostrar cualquier aviso adicional -->
-                <div id="aviso"></div>
+            <div id="florNombre"></div>
+            <!-- Pre-relleno con el valor "Rosa" -->
+    
+            <div class="container-cartas">
+                <div class="card_pre" data-keyword="Margarita">
+                    <h2>Margarita</h2>
+                    <img src="imagenes/Margarita.jpg" alt="Margarita" class="card-image">
+                    <p>Descripción: La margarita es una flor que se caracteriza por sus pétalos blancos y su centro amarillo. Es una planta resistente y versátil que se encuentra comúnmente en jardines y praderas. Las margaritas simbolizan la pureza y la inocencia.</p>
+                </div>
+                <div class="card_pre" data-keyword="Diente de Leon">
+                    <h2>Diente de león</h2>
+                    <img src="imagenes/DienteDeLeon.jpg" alt="Diente de león" class="card-image">
+                    <p>Descripción: El diente de león es una planta con flores amarillas brillantes que se transforman en una esfera de semillas cuando madura. Es conocido por sus propiedades medicinales y su capacidad para crecer en diversos tipos de suelos. A menudo se encuentra en campos, jardines y áreas de césped.</p>
+                </div>
+                <div class="card_pre" data-keyword="Rosa">
+                    <h2>Rosa</h2>
+                    <img src="imagenes/Rosa.jpg" alt="Rosa" class="card-image">
+                    <p>Descripción: La rosa es una flor clásica conocida por sus elegantes pétalos y su fragancia dulce. Hay muchas variedades de rosas que vienen en diferentes colores, cada uno con su propio significado simbólico. Las rosas son populares en ramos y arreglos florales, y son símbolo de amor y admiración.</p>
+                </div>
+                <div class="card_pre" data-keyword="Girasol">
+                    <h2>Girasol</h2>
+                    <img src="imagenes/Girasol.jpg" alt="Girasol" class="card-image">
+                    <p>Descripción: El girasol es una planta con grandes flores amarillas que siguen el movimiento del sol a lo largo del día. Es conocido por su tamaño imponente y su capacidad para producir semillas comestibles. Los girasoles son símbolos de lealtad y devoción.</p>
+                </div>
+                <div class="card_pre" data-keyword="Tulipan">
+                    <h2>Tulipán</h2>
+                    <img src="imagenes/Tulipan.jpg" alt="Tulipán" class="card-image">
+                    <p>Descripción: El tulipán es una flor bulbosa que tiene pétalos en forma de copa y viene en una amplia gama de colores. Es muy popular en jardinería y arreglos florales, especialmente en primavera. Los tulipanes simbolizan el amor perfecto y son apreciados por su elegancia y variedad de colores..</p>
+                </div>
             </div>
+ <!-- Contenedor para el nombre de la flor predicha -->
+            <!--<div class="container">
+                 Contenedor para mostrar la humedad actual 
+                <div id="humedad" class="humidity-container">Humedad actual: Cargando...</div> -->
+                <!-- Contenedor para mostrar cualquier aviso adicional -->
+                <!--<div id="aviso"></div>
+            </div>-->
         </div>
     </section>
 
@@ -126,7 +156,27 @@
     <footer>
         <p>FLORA-NET 2024</p> <!-- Información de copyright -->
     </footer>
+    <script>
+            // Función para mostrar la tarjeta correspondiente
+        function mostrarTarjeta(keyword) {
+            const cards = document.querySelectorAll('.card_pre');
+            cards.forEach(card => {
+                // Compara el keyword con el atributo data-keyword de cada tarjeta
+                if (card.dataset.keyword.toLowerCase() === keyword.toLowerCase()) {
+                    card.classList.add('active'); // Muestra la tarjeta
+                } else {
+                    card.classList.remove('active'); // Oculta la tarjeta
+                }
+            });
+        }
 
+        // Asegúrate de que el DOM esté completamente cargado antes de ejecutar el script
+        document.addEventListener('DOMContentLoaded', () => {
+            // Puedes agregar aquí cualquier código de inicialización relacionado con las tarjetas si es necesario
+        });
+
+        
+    </script>
     <!-- Enlace al archivo JavaScript que contiene las funciones de predicción -->
     <script src="scripts/script.js"></script>
 </body>

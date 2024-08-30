@@ -45,6 +45,8 @@ async function predecirImagen() {
             // Mostrar solo la categoría con la mayor probabilidad
             const categoriaMaximaDiv = document.getElementById('categoriaMaxima');
             categoriaMaximaDiv.innerHTML = ` ${categoriaMaxProbabilidad}`;
+            // Llamar a la función para mostrar la tarjeta correspondiente
+            mostrarTarjeta(categoriaMaxProbabilidad);
 
 
             // Mostrar el resultado con la máxima probabilidad

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de Ambiente</title>
+    <!-- Enlaza el archivo CSS principal para los estilos generales -->
+    <link rel="stylesheet" href="Css/styles.css">
+    <!-- Enlaza el archivo CSS para la navegación específica -->
+    <link rel="stylesheet" href="Css/nav.css">
+    <!-- Incluye la biblioteca TensorFlow.js desde un CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3"></script>
+    <style>
+            /* Estilo adicional para el botón de regado */
+        .btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #4CAF50; /* Color de fondo del botón */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+
+        /* Estilos para centrar el contenedor y la tabla */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            max-width: 600px; /* Ajusta el ancho máximo del contenedor según tu diseño */
+            margin: 20px auto; /* Centra el contenedor y añade espaciado vertical */
+            padding: 20px; /* Ajusta el padding para añadir más espacio interno */
+            box-sizing: border-box;
+            background-color: #fff; /* Fondo blanco */
+            border: 1px solid #ddd; /* Borde gris */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+        }
+
+        /* Asegura que la tabla ocupe el ancho completo del contenedor */
+        .data-table {
+            width: 100%; /* Ajusta el ancho de la tabla al 100% del contenedor */
+            border-collapse: collapse; /* Asegura que las celdas estén colapsadas en una sola línea */
+            margin: 0; /* Elimina margen adicional de la tabla */
+        }
+
+        .data-table th, .data-table td {
+            padding: 29px 45px; /* Añade relleno en la parte superior/inferior y a los lados de cada celda */
+            /*border: 1px solid #ddd;  Añade un borde gris claro alrededor de las celdas */
+            text-align: left; /* Alinea el texto a la izquierda dentro de las celdas */
+        }
+
+        .data-table th {
+            background-color: #f4f4f4; /* Añade un fondo gris claro a las celdas del encabezado */
+            font-weight: bold; /* Hace el texto del encabezado en negrita */
+        }
+
+        .data-table td {
+            background-color: #fff; /* Añade un fondo blanco a las celdas */
+        }
+
+        /* Ajusta el espaciado entre filas de la tabla */
+        .data-table tr {
+            margin-bottom: 10px; /* Espaciado entre filas de la tabla */
+        }
+
+        h2 {
+            text-align: center; /* Centra el título */
+            margin-bottom: 20px; /* Espaciado debajo del título */
+        }
+
+        /* Opcional: Añadir espacio adicional en los bordes de la tabla */
+        .data-section {
+            margin: 20px 0; /* Añade margen superior e inferior a la sección de datos */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Cabecera de la página -->
+    <header>
+        <div class="nav-wrapper">
+            <div class="logo-container">
+                <img src="imagenes/logo.png" width="50" height="50" alt="" class="icon"> 
+                <span class="logo-text">FLORA-NET</span>
+            </div>
+            <nav>
+                <input class="hidden" type="checkbox" id="menuToggle">
+                <label class="menu-btn" for="menuToggle"> 
+                    <div class="menu"></div>
+                    <div class="menu"></div>
+                    <div class="menu"></div>
+                </label>
+                <div class="nav-container">
+                    <ul class="nav-tabs"> 
+                        <li class="nav-tab"><a href="start.html">Inicio</a></li> 
+                        <li class="nav-tab"><a href="chat_bot.html">ChatBot</a></li>
+                        <li class="nav-tab"><a href="regar.html">Datos del Cultivo</a></li>
+                        <li class="nav-tab"><a href="automatizar.html">Automatizar</a></li>
+                        <li class="nav-tab"><a href="abouts.html">Contactamos</a></li>
+                        <li class="nav-tab"><a href="index.html">Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section>
+        <div class="logo-containers">
+            <img src="imagenes/logo.png" alt="Logo" class="logo2">
+            <h1>FLORA-NET</h1>
+        </div>
+    </section>
+    
+    <!-- Sección con una tabla para mostrar datos de ambiente -->
+    <section class="data-section">
+        <div class="container">
+            <h2>Datos del Ambiente</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Parámetro</th>
+                        <th>Valor</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Humedad</td>
+                        <td id="humedad">Cargando...</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Temperatura</td>
+                        <td id="temperatura">Cargando...</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Acción</td>
+                        <td></td>
+                        <td>
+                            <button id="regarBtn" class="btn" onclick="regar()">Regar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>FLORA-NET 2024</p>
+    </footer>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
+
+
+
