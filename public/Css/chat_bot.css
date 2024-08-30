@@ -58,8 +58,20 @@ main {
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 3em;
   margin-bottom: 10px;
+  color: #305700;
+}
+/* Estilo para el párrafo de ayuda */
+p {
+  font-size: 1.5em; /* Tamaño de fuente más grande */
+  font-weight: bold; /* Fuente en negrita */
+  color: #323432; /* Color del texto */
+  text-align: center; /* Centrar el texto */
+  margin-top: 20px; /* Espacio arriba del párrafo */
+  margin-bottom: 20px; /* Espacio abajo del párrafo */
+  line-height: 1.5; /* Altura de línea para mejorar la legibilidad */
+  font-family: 'Arial', sans-serif; /* Fuente */
 }
 
 .consulta-container {
@@ -71,10 +83,10 @@ h1 {
 }
 
 .historial{
-  width: 20%;
+  width: 30%;
 }
 .resultado {
-  width: 68%; /* Asigna un ancho similar a ambos lados */
+  width: 60%; /* Asigna un ancho similar a ambos lados */
 }
 
 .historial h3,
@@ -87,26 +99,26 @@ h1 {
   list-style-type: none; /* Elimina los marcadores de lista predeterminados */
   padding: 0;
   margin: 0;
-  max-height: 300px; /* Altura máxima para el historial */
+  max-height: 600px; /* Altura máxima para el historial */
   overflow-y: auto; /* Permite desplazamiento si el contenido es largo */
 }
 
 .historial li {
   margin-bottom: 8px;
-  padding: 8px;
+  padding: 12px;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
 .resultado pre {
-  background-color: #f1f1f1;
+  background-color: #dbdcdb;
   padding: 10px;
   border-radius: 4px;
   overflow-x: auto; /* Permite desplazamiento horizontal si es necesario */
-  height: 400px; /* Altura fija para el área de resultado */
+  height: 600px; /* Altura fija para el área de resultado */
   font-family: 'Arial', sans-serif; /* Cambia la fuente a Arial */
-  font-size: 16px; /* Tamaño de fuente más grande */
+  font-size: 18px; /* Tamaño de fuente más grande */
   line-height: 1.5; /* Aumenta la altura de línea para mejor legibilidad */
   color: #333; /* Color de texto más oscuro */
 }
@@ -128,7 +140,7 @@ pre {
 }
 
 button {
-  background-color: #a6e47f;
+  background-color: #5B7917;
   color: #fff;
   border: none;
   border-radius: 5px;

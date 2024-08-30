@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificación de Enfermedades de Plantas</title>
+    <!-- Incluye la librería de TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <style>
+        #output {
+            margin-top: 20px;
+        }
+        #image-preview {
+            max-width: 256px;
+            max-height: 256px;
+            margin-top: 10px;
+            display: none; /* Oculta la imagen por defecto */
+        }
+    </style>
+</head>
+<body>
+    <h1>Clasificación de Enfermedades de Plantas</h1>
+    <input type="file" id="image-upload" accept="image/*" />
+    <img id="image-preview" alt="Vista previa de la imagen" />
+    <button id="predict-button" disabled>Predecir</button>
+    <div id="output"></div>
+
+    <script>
+        let model;
+
+        async function loadModel() {
+            try {
+                model = await tf.loadGraphModel('plant/model.json');
+                console.log('Modelo cargado correctamente');
+            } catch (error) {
+                console.error('Error al cargar el modelo:', error);
+                alert('Hubo un error al cargar el modelo. Revisa la consola para más detalles.');
+            }
+        }
+
+        loadModel(); // Cargar el modelo al inicio
+
+        const imgElement = document.getElementById('image-preview');
+        const predictButton = document.getElementById('predict-button');
+
+        document.getElementById('image-upload').addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                imgElement.src = URL.createObjectURL(file);
+                imgElement.style.display = 'block'; // Muestra la imagen cargada
+                predictButton.disabled = false; // Habilita el botón de predecir
+            }
+        });
+
+        predictButton.addEventListener('click', async () => {
+            if (!model) {
+                alert('El modelo aún no se ha cargado. Por favor espera un momento.');
+                return;
+            }
+
+            if (imgElement.src) {
+                // Preprocesar la imagen
+                const tensor = tf.browser.fromPixels(imgElement)
+                    .resizeNearestNeighbor([256, 256]) // Ajusta el tamaño a 256x256
+                    .toFloat()
+                    .div(tf.scalar(255))
+                    .expandDims();
+
+                // Hacer la predicción
+                const prediction = await model.predict(tensor).data();
+
+                // Obtener el índice de la clase con mayor probabilidad
+                const maxIndex = prediction.indexOf(Math.max(...prediction));
+
+                // Definir las etiquetas de clases
+                const labels = [
+                    "Apple___Apple_scab", "Apple___Black_rot", "Apple___Cedar_apple_rust", "Apple___healthy",
+                    "Background_without_leaves", "Blueberry___healthy", "Cherry___healthy", "Cherry___Powdery_mildew",
+                    "Corn___Cercospora_leaf_spot Gray_leaf_spot", "Corn___Common_rust", "Corn___healthy", "Corn___Northern_Leaf_Blight",
+                    "Potato___Early_blight", "Potato___Late_blight", "Potato___healthy", "Raspberry___healthy",
+                    "Strawberry___healthy", "Strawberry___Leaf_scorch", "Tomato___Bacterial_spot", "Tomato___Early_blight",
+                    "Tomato___healthy", "Tomato___Late_blight", "Tomato___Leaf_Mold", "Tomato___Septoria_leaf_spot",
+                    "Tomato___Spider_mites Two-spotted_spider_mite", "Tomato___Target_Spot", "Tomato___Tomato_mosaic_virus", 
+                    "Tomato___Tomato_Yellow_Leaf_Curl_Virus"
+                ];
+
+                // Mostrar el resultado
+                document.getElementById('output').innerText = `Predicción: ${labels[maxIndex]} (Confianza: ${(prediction[maxIndex] * 100).toFixed(2)}%)`;
+            } else {
+                alert('Por favor carga una imagen antes de predecir.');
+            }
+        });
+    </script>
+</body>
+</html>

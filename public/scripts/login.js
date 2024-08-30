@@ -28,8 +28,11 @@ document.getElementById('signInForm').addEventListener('submit', async function(
         const user = userCredential.user;
 
         // Obtener el nombre del usuario y guardarlo en localStorage
-        const userName = user.displayName;
-        localStorage.setItem('userName', userName);
+        //const userName = user.displayName;
+        //localStorage.setItem('userName', userName);
+        const userName = user.displayName || user.email;
+        const userId = user.uid;
+        localStorage.setItem('user',JSON.stringify({userName, userId}))
 
         // Redirigir a la página principal
         window.location.href = 'start.html';
