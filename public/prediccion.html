@@ -35,11 +35,11 @@
                 <!-- Contenedor de navegación, visible en pantallas pequeñas -->
                 <div class="nav-container">
                     <!-- Lista de elementos de navegación -->
-                    <ul class="nav-tabs"> 
-                        <!-- Enlaces de navegación a las diferentes secciones del sitio -->
-                        <li class="nav-tab"><a href="start.html">Inicio</a></li> 
+                    <ul class="nav-tabs">
+                        <li class="nav-tab"><a href="start.html">Inicio</a></li>
                         <li class="nav-tab"><a href="chat_bot.html">ChatBot</a></li>
-                        <li class="nav-tab"><a href="regar.html">Datos del Cultivo</a></li>
+                        <li class="nav-tab"><a href="prediccion.html">Predicción</a></li>
+                        <li class="nav-tab"><a href="regar.html">Datos del cultivo</a></li>
                         <li class="nav-tab"><a href="automatizar.html">Automatizar</a></li>
                         <li class="nav-tab"><a href="abouts.html">Contactamos</a></li>
                         <li class="nav-tab"><a href="index.html">Cerrar Sesión</a></li>
@@ -137,17 +137,14 @@
                 <span class="button-text">Saber Más ...</span> <!-- Texto del botón -->
             </button>
             <!-- Botones adicionales con íconos y texto similares -->
-            <button class="button2">
+            <button class="button2" onclick="window.location.href='regar.html'">
                 <img src="/public/imagenes/icon2.png" alt="Icono" class="button-icon">
-                <span id="irAlChat" class="button-text">Regar</span>
+                <span class="button-text">Datos del cultivo</span>
             </button>
-            <button class="button2">
+            
+            <button class="button2" onclick="window.location.href='automatizar.html'">
                 <img src="/public/imagenes/icon3.png" alt="Icono" class="button-icon">
                 <span class="button-text">Automatizar</span>
-            </button>
-            <button class="button2">
-                <img src="/public/imagenes/icon4.png" alt="Icono" class="button-icon">
-                <span class="button-text">Saber Más ...</span>
             </button>
         </div>
     </section>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario - Preguntas Adicionales</title>
+    <link rel="stylesheet" href="Css/styles.css">
+    <link rel="stylesheet" href="Css/nav.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        fieldset {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #333;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #4CAF50; /* Color de fondo del botón */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049; /* Color de fondo al pasar el ratón */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-wrapper">
+            <div class="logo-container">
+                <img src="imagenes/logo.png" width="50" height="50" alt="" class="icon">
+                <span class="logo-text">FLORA-NET</span>
+            </div>
+            <nav>
+                <input class="hidden" type="checkbox" id="menuToggle">
+                <label class="menu-btn" for="menuToggle">
+                    <div class="menu"></div>
+                    <div class="menu"></div>
+                    <div class="menu"></div>
+                </label>
+                <div class="nav-container">
+                    <ul class="nav-tabs">
+                        <li class="nav-tab"><a href="start.html">Inicio</a></li>
+                        <li class="nav-tab"><a href="chat_bot.html">ChatBot</a></li>
+                        <li class="nav-tab"><a href="prediccion.html">Predicción</a></li>
+                        <li class="nav-tab"><a href="regar.html">Datos del cultivo</a></li>
+                        <li class="nav-tab"><a href="automatizar.html">Automatizar</a></li>
+                        <li class="nav-tab"><a href="abouts.html">Contactamos</a></li>
+                        <li class="nav-tab"><a href="index.html">Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="container">
+        <h1>Preguntas Adicionales</h1>
+        <form action="" method="get">
+            <fieldset>
+                <label for="pregunta1">¿Qué tipo de plantas tienes en tu vivero?</label>
+                <select id="pregunta1" name="pregunta1">
+                    <option value="Plantas ornamentales">Plantas ornamentales</option>
+                    <option value="Hortalizas y vegetales">Hortalizas y vegetales</option>
+                    <option value="Plantas suculentas">Plantas suculentas</option>
+                    <option value="Plantas aromáticas">Plantas aromáticas</option>
+                    <option value="Otros">Otros</option>
+                </select>
+
+                <label for="pregunta2">¿Cuál es el tipo de suelo en el que están plantadas tus plantas?</label>
+                <select id="pregunta2" name="pregunta2">
+                    <option value="Arenoso">Arenoso</option>
+                    <option value="Arcilloso">Arcilloso</option>
+                    <option value="Otros">Otros</option>
+                </select>
+
+                <label for="pregunta3">¿Con qué frecuencia riegas tus plantas actualmente?</label>
+                <select id="pregunta3" name="pregunta3">
+                    <option value="Diario">Diario</option>
+                    <option value="Cada dos días">Cada dos días</option>
+                    <option value="Semanal">Semanal</option>
+                    <option value="Solo cuando parece necesario">Solo cuando parece necesario</option>
+                </select>
+
+                <label for="pregunta4">¿Prefieres un sistema de riego que funcione con temporizador, sensores de humedad o ambos?</label>
+                <select id="pregunta4" name="pregunta4">
+                    <option value="Solo temporizador">Solo temporizador</option>
+                    <option value="Solo sensores de humedad">Solo sensores de humedad</option>
+                    <option value="Ambos">Ambos</option>
+                </select>
+
+                <label for="pregunta5">¿Qué tipo de fuente de agua usarás para el riego?</label>
+                <select id="pregunta5" name="pregunta5">
+                    <option value="Agua del grifo">Agua del grifo</option>
+                    <option value="Agua de lluvia recolectada">Agua de lluvia recolectada</option>
+                    <option value="Agua de pozo">Agua de pozo</option>
+                </select>
+
+                <label for="pregunta6">¿Qué nivel de control y personalización deseas para el sistema de riego?</label>
+                <select id="pregunta6" name="pregunta6">
+                    <option value="Control básico (solo encender/apagar)">Control básico (solo encender/apagar)</option>
+                    <option value="Control avanzado (ajustes de frecuencia y duración del riego)">Control avanzado (ajustes de frecuencia y duración del riego)</option>
+                    <option value="Control completo (ajustes basados en clima y sensores)">Control completo (ajustes basados en clima y sensores)</option>
+                </select>
+            </fieldset>
+
+            <button type="submit">Enviar mis Respuestas</button>
+        </form>
+    </section>
+</body>
+</html>

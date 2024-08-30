@@ -112,7 +112,7 @@ p {
 }
 
 .resultado pre {
-  background-color: #dbdcdb;
+  background-color: #f2f2f2;
   padding: 10px;
   border-radius: 4px;
   overflow-x: auto; /* Permite desplazamiento horizontal si es necesario */

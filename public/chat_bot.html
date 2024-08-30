@@ -25,6 +25,7 @@
                 <div class="nav-container">
                     <ul class="nav-tabs">
                         <li class="nav-tab"><a href="start.html">Inicio</a></li>
+                        <li class="nav-tab"><a href="chat_bot.html">ChatBot</a></li>
                         <li class="nav-tab"><a href="prediccion.html">Predicción</a></li>
                         <li class="nav-tab"><a href="regar.html">Datos del cultivo</a></li>
                         <li class="nav-tab"><a href="automatizar.html">Automatizar</a></li>
@@ -137,7 +138,8 @@
             'protección', 'revitalización', 'crecimiento saludable', 'planta tropical', 'planta suculenta', 'planta carnívora',
             'planta perenne', 'planta anual', 'planta herbácea', 'planta arbustiva', 'planta trepadora', 'cultivo en invernadero',
             'insecticida', 'planta en maceta', 'planta en suelo', 'planta en hidroponía', 'planta en arena', 'planta en tierra',
-            'planta en tierra arcillosa', 'planta en tierra arenosa', 'planta en tierra orgánica', 'tratamiento de suelo', 'recuperación de planta'
+            'planta en tierra arcillosa', 'planta en tierra arenosa', 'planta en tierra orgánica', 'tratamiento de suelo', 'recuperación de planta',
+            'Rosa','Tulipan','Margarita','Girasol','Diente de leon','Información sobre Rosa'
         ];
 
         async function realizarConsulta(consulta) {
@@ -330,6 +332,24 @@
         
             return textoFormateado;
         }
+        // Función para obtener los parámetros de la URL
+        function obtenerParametro(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Función para extraer el parámetro de la URL y establecerlo en el textarea
+        function setConsultaFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const flor = urlParams.get('flor');
+            if (flor) {
+                document.querySelector("#consulta").value = `Planta ${flor}`;
+                document.querySelector("#botonConsulta").click(); // Opcional: consultar automáticamente
+            }
+        }
+    
+        // Llamar a la función al cargar la página
+        window.addEventListener('DOMContentLoaded', setConsultaFromURL);
     </script>
 </body>
 </html>
