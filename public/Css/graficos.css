@@ -1,0 +1,235 @@
+/* General reset and box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background-color: #fff;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* Logo Section */
+.logo-section {
+  text-align: center;
+  padding: 10px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-text {
+  margin-left: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Date and Time Section */
+.date-time-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#date-time-container {
+  font-size: 24px;
+  color: #0de6c2;
+  font-weight: bold;
+}
+
+/* Graph and Info Section */
+.graph-info-section {
+  padding: 10px;
+  flex-grow: 1;
+}
+
+#container {
+  width: 100%;
+  height: 600px;
+}
+
+/* Temperature Section */
+.temperature-section {
+  text-align: center;
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Button Section */
+.button-section {
+  text-align: center;
+  padding: 20px;
+}
+
+#water-button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+#warning {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Responsive Layout */
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.left-column, .right-column {
+  width: 48%;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#search-box {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#search-button {
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#search-button:hover {
+  background-color: #0056b3;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  display: inline;
+  margin: 0 10px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+.temperature-section {
+  text-align: center;
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Alinea el contenido en la parte superior */
+  width: 100%;
+  max-width: 1200px; /* Máximo ancho para mantener el diseño */
+}
+
+.left-column {
+  width: 70%; /* Ajusta el ancho como desees */
+  text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.right-column {
+  width: 28%; /* Ajusta el ancho como desees */
+  display: flex;
+  flex-direction: column; /* Coloca los elementos en columna */
+  align-items: flex-start; /* Alinea los elementos a la izquierda */
+}
+
+#search-box {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#search-button {
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.left-column {
+  width: 70%; /* Ajusta el ancho como desees */
+  text-align: center; /* Alinea el texto al centro */
+  display: flex;
+  flex-direction: column; /* Coloca los elementos en columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+  justify-content: center; /* Centra los elementos verticalmente */
+}
+
+#search-button:hover {
+  background-color: #0056b3;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .info-container {
+      flex-direction: column;
+  }
+
+  .left-column, .right-column {
+      width: 100%;
+  }
+}

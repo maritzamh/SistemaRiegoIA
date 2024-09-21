@@ -9,6 +9,7 @@ body {
     box-sizing: border-box; /* Incluye padding y border en el cálculo del width y height */
     overflow: hidden; /* Oculta el contenido que desborda el contenedor */
     margin: 0; /* Elimina el margen predeterminado del cuerpo */
+    /*overflow-y: auto;  Permite desplazamiento vertical */
 }
 
 .background {

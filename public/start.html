@@ -6,6 +6,7 @@
   <title>Ejemplo</title> <!-- Título de la página que aparece en la pestaña del navegador -->
   <link rel="stylesheet" href="/public/Css/start.css"> <!-- Enlaza el archivo CSS para el estilo general -->
   <link rel="stylesheet" href="/public/Css/nav.css"> <!-- Enlaza el archivo CSS para el estilo de la navegación -->
+  
 </head>
 <body>
   <div class="container"> <!-- Contenedor principal que envuelve todo el contenido -->
@@ -98,25 +99,33 @@
           <a href="#" class="button">Más información</a> <!-- Botón para más información -->
         </section>
     </main>
-    <footer class="footer"> <!-- Pie de página -->
-      <!-- Pie de página (sin cambios) -->
-    </footer>
+    <footer class="footer">
+      <div class="footer-content">
+          <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
+          <ul class="footer-links">
+              <li><a href="#privacy">Política de Privacidad</a></li>
+              <li><a href="#terms">Términos de Servicio</a></li>
+              <li><a href="#contact">Contacto</a></li>
+          </ul>
+      </div>
+  </footer>
+  
   </div>
   <script>
     function redirectToPage(url) {
-        window.location.href = url;
-    }
+      window.location.href = url;
+  }
     // Obtener datos del usuario desde localStorage
     const user = JSON.parse(localStorage.getItem('user'));
-    const { userName, userId } = user || {};
+    const { userName } = user || {};
 
     // Mostrar el mensaje de bienvenida
     const welcomeMessage = document.getElementById('welcomeMessage');
     if (userName) {
         welcomeMessage.textContent = `Hola, ${userName}`;
+    } else {
+        welcomeMessage.textContent = 'Hola, invitado';
     }
-  
-  
   </script>
 </body>
 </html>

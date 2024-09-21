@@ -257,7 +257,7 @@ h1 {
 #florNombre {
     margin: 0 0 1rem 0; /* Establece márgenes para el título, con margen inferior de 1rem */
     font-weight: 900; /* Define el peso de fuente como 900 (negrita) */
-    font-size: 4.5rem; /* Tamaño de fuente de 4.5rem */
+    font-size: 3.5rem; /* Tamaño de fuente de 4.5rem */
     text-transform: uppercase; /* Convierte el texto a mayúsculas */
     color: #97AF8F; /* Color del texto */
 }
@@ -387,6 +387,10 @@ footer img {
     h1 {
         font-size: 3rem; /* Reduce el tamaño de la fuente del título en pantallas pequeñas */
     }
+    #florNombre{
+        font-size: 3rem;
+
+    }
 
     .container {
         width: 90%; /* Aumenta el ancho del contenedor en pantallas pequeñas */
@@ -410,14 +414,18 @@ footer img {
     }
 
     .input-container label.btn, .btn {
-        width: 100%; /* El ancho de los botones ocupa el 100% del contenedor */
+        width: 90%; /* El ancho de los botones ocupa el 100% del contenedor */
     }
 }
 
 /* Estilos adicionales para asegurar que el diseño sea responsivo en pantallas muy pequeñas */
 @media (max-width: 480px) {
     h1 {
-        font-size: 2.5rem; /* Reduce aún más el tamaño de la fuente del título en pantallas muy pequeñas */
+        font-size: 1.5rem; /* Reduce aún más el tamaño de la fuente del título en pantallas muy pequeñas */
+    }
+    #florNombre{
+        font-size: 1.6rem;
+
     }
 
     .container {
@@ -442,7 +450,7 @@ footer img {
     }
 
     .custom-button {
-        font-size: 14px; /* Reduce el tamaño de la fuente de los botones personalizados */
+        font-size: 12px; /* Reduce el tamaño de la fuente de los botones personalizados */
         padding: 8px 15px; /* Reduce el padding interno de los botones */
     }
 }

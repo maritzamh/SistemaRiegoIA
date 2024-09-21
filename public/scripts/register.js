@@ -20,9 +20,11 @@ document.getElementById('signUpForm').addEventListener('submit', async function(
     const email = document.getElementById('signupEmail').value;
     const password = document.getElementById('signupPassword').value;
     const displayName = document.getElementById('signupUserName').value;
-    const errorDisplay = document.createElement('p'); // Crear elemento para mostrar errores
-    errorDisplay.style.color = 'red';
-    errorDisplay.id = 'registerErrorDisplay';
+    const errorDisplay = document.getElementById('registerErrorDisplay');
+    const successMessage = document.getElementById('signupSuccessMessage');
+
+    errorDisplay.classList.remove('show', 'close'); // Ocultar error inicial
+    successMessage.classList.remove('show', 'close'); // Ocultar mensaje de éxito inicial
 
     try {
         // Crear un nuevo usuario con el correo y contraseña proporcionados
@@ -40,43 +42,38 @@ document.getElementById('signUpForm').addEventListener('submit', async function(
         document.getElementById('signupPassword').value = '';
 
         // Mostrar mensaje de éxito
-        const successMessage = document.getElementById('signupSuccessMessage');
-        successMessage.style.display = 'block';
+        successMessage.textContent = 'Registro exitoso. Ya puedes iniciar sesión.';
+        successMessage.classList.add('show');
 
-        // Ocultar mensaje de éxito después de 5 segundos
+        // Redirigir a la página de inicio de sesión
         setTimeout(() => {
-            successMessage.style.display = 'none';
-        }, 5000);
-
-        // Redirigir al login
-        window.location.href = 'login.html';
+            window.location.href = 'login.html';
+        }, 2000); // Retardo para que el usuario vea el mensaje de éxito
 
     } catch (error) {
         // Manejar errores específicos
+        let errorMessage = '';
         switch (error.code) {
             case 'auth/invalid-email':
-                errorDisplay.textContent = 'Correo inválido.';
+                errorMessage = 'Correo inválido.';
                 break;
             case 'auth/weak-password':
-                errorDisplay.textContent = 'La contraseña es demasiado débil. Debe tener al menos 6 caracteres.';
+                errorMessage = 'La contraseña es demasiado débil. Debe tener al menos 6 caracteres.';
                 break;
             case 'auth/email-already-in-use':
-                errorDisplay.textContent = 'El correo ya está en uso. Por favor, utiliza otro correo o inicia sesión.';
+                errorMessage = 'El correo ya está en uso. Por favor, utiliza otro correo o inicia sesión.';
                 break;
             default:
-                errorDisplay.textContent = `Error: ${error.message}`;
+                errorMessage = `Error: ${error.message}`;
         }
 
-        // Agregar mensaje de error al formulario si no existe
-        if (!document.getElementById('registerErrorDisplay')) {
-            document.getElementById('signUpForm').appendChild(errorDisplay);
-        }
+        // Mostrar mensaje de error
+        errorDisplay.textContent = errorMessage;
+        errorDisplay.classList.add('show');
 
-        // Ocultar mensaje de error después de 5 segundos
+        // Eliminar el mensaje después de 6 segundos
         setTimeout(() => {
-            if (errorDisplay) {
-                errorDisplay.remove();
-            }
-        }, 5000);
+            errorDisplay.classList.add('close');
+        }, 6000);
     }
 });

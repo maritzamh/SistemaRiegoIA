@@ -1,8 +1,9 @@
 //npm install firebase npm
   // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
-  import { getAuth } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"
+  // Importar Firebase usando el CDN
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
  
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -19,7 +20,10 @@
     measurementId: "G-TG26MPZHDG"
   };
 
-  // Initialize Firebase
-  export const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  export const auth = getAuth(app)
+// Inicializar Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
+
+// Exportar una sola vez
+export { app, auth, analytics };

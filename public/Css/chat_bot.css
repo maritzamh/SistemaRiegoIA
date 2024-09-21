@@ -28,29 +28,6 @@ body {
   font-weight: bold;
 }
 
-/* Estilo para la navegación */
-
-.hidden {
-  display: none;
-}
-
-.menu-btn {
-  display: none;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-}
-
-.menu {
-  width: 30px;
-  height: 3px;
-  background: #fff;
-  margin: 5px 0;
-  border-radius: 3px;
-}
-
-
 /* Estilo para el main */
 main {
   padding: 20px;
@@ -62,6 +39,7 @@ h1 {
   margin-bottom: 10px;
   color: #305700;
 }
+
 /* Estilo para el párrafo de ayuda */
 p {
   font-size: 1.5em; /* Tamaño de fuente más grande */
@@ -79,12 +57,14 @@ p {
   justify-content: space-between; /* Espacio uniforme entre los elementos */
   padding: 20px;
   border: 1px solid #ccc; /* Bordes para visualizar mejor la división */
+  background-color: #f6f6f6;
   border-radius: 8px;
 }
 
-.historial{
+.historial {
   width: 30%;
 }
+
 .resultado {
   width: 60%; /* Asigna un ancho similar a ambos lados */
 }
@@ -106,8 +86,8 @@ p {
 .historial li {
   margin-bottom: 8px;
   padding: 12px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+  background-color: #f6f6f6;
+  border: 1px solid #ebebeb;
   border-radius: 4px;
 }
 
@@ -120,9 +100,8 @@ p {
   font-family: 'Arial', sans-serif; /* Cambia la fuente a Arial */
   font-size: 18px; /* Tamaño de fuente más grande */
   line-height: 1.5; /* Aumenta la altura de línea para mejor legibilidad */
-  color: #333; /* Color de texto más oscuro */
+  color: #ad2a2a; /* Color de texto más oscuro */
 }
-
 
 pre {
   background-color: #fff;
@@ -140,8 +119,8 @@ pre {
 }
 
 button {
-  background-color: #5B7917;
-  color: #fff;
+  background-color: #d4e5d3;
+  color: #002b00;
   border: none;
   border-radius: 5px;
   padding: 60px 20px;
@@ -153,15 +132,19 @@ button {
 }
 
 button:hover {
-  background-color: #00b336;
+  background-color: #bfccae;
+  color: #004600;
 }
+
 .input-container {
   display: flex;
   align-items: stretch; /* Asegura que los elementos tengan la misma altura */
   width: 100%;
   max-width: 800px; /* Ancho máximo del contenedor */
-  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  padding: 15px ;
+  margin: 5px auto; /* Añade espacio arriba y abajo, y centra el contenedor horizontalmente */
 }
+
 .error-message {
   display: flex;
   align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
@@ -192,9 +175,9 @@ button:hover {
 
 .send-btn {
   padding: 10px;
-  background-color: #4f9742;
+  background-color: #9fb285;
   color: white;
-  border: 1px solid #89ec8d;
+  border: 1px solid #dfe5d6;
   border-radius: 0 4px 4px 0; /* Bordes redondeados solo en la derecha */
   cursor: pointer;
   display: flex;
@@ -207,18 +190,167 @@ button:hover {
 }
 
 .send-btn:hover {
-  background-color: #1fc64e; /* Cambia el color al pasar el mouse */
+  background-color: #dfe5d6; /* Cambia el color al pasar el mouse */
+  color: #004000;
+}
+
+/* Media Queries para mejorar la responsividad */
+
+@media (max-width: 768px) {
+  .nav-container {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  #menuToggle:checked + .menu-btn + .nav-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #333;
+    width: 100%;
+    border-radius: 5px;
+    z-index: 10;
+  }
+
+  .nav-tabs {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .nav-tab {
+    margin: 0;
+  }
+
+  .consulta-container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .historial, .resultado {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .buttons button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1em;
+  }
+
+  .input-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #consulta {
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  .send-btn {
+    width: 100%;
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2em;
+  }
+  
+}
+
+.resultado pre {
+  background-color: #dfe5df; /* Fondo suave para contraste */
+  padding: 20px; /* Espaciado interno para mejorar la legibilidad */
+  margin: 0; /* Espaciado externo, asegúrate de que sea adecuado */
+  border-radius: 4px; /* Bordes redondeados */
+  overflow-wrap: break-word; /* Rompe palabras largas para evitar desbordamiento */
+  white-space: pre-wrap; /* Ajusta el texto dentro del contenedor */
+  font-size: 1em; /* Tamaño de fuente estándar */
+  line-height: 1.6; /* Espaciado entre líneas para mejorar la legibilidad */
+  color: #333; /* Color de texto oscuro */
+}
+.welcome-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* Espacio mínimo entre el texto y la imagen */
+  padding: 20px;
+}
+
+.text-container {
+  flex: 0.4; /* Permite que el contenedor de texto ocupe el espacio disponible */
+}
+
+.welcome-image {
+  max-width: 100px; /* Ajusta el tamaño máximo de la imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
+  margin-left: 5px; /* Espacio muy pequeño a la izquierda de la imagen */
+  border-radius: 8px; /* Bordes redondeados opcionales */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .welcome-section {
+      flex-direction: column; /* Apila el texto y la imagen verticalmente */
+      align-items: center; /* Centra los elementos horizontalmente */
+      text-align: center; /* Centra el texto */
+  }
+
+  .welcome-image {
+      max-width: 20%; /* Ajusta el tamaño máximo de la imagen en pantallas más pequeñas */
+      margin-left: 0; /* Elimina el margen a la izquierda en pantallas pequeñas */
+      margin-top: 10px; /* Añade espacio arriba de la imagen en pantallas pequeñas */
+  }
+}
+
+/* Media query adicional para celulares muy pequeños */
+@media (max-width: 480px) {
+  .welcome-section {
+      padding: 10px; /* Reduce el padding en pantallas muy pequeñas */
+  }
+
+  .welcome-image {
+      max-width: 20%; /* Ajusta el tamaño máximo de la imagen en celulares muy pequeños */
+  }
+
+  h1 {
+      font-size: 1.5em; /* Reduce el tamaño del texto en pantallas pequeñas */
+  }
+
+  p {
+      font-size: 1.2em; /* Ajusta el tamaño del texto del párrafo en pantallas pequeñas */
+  }
 }
 
 
-/* Estilo para el footer */
-footer {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  font-size: 0.9em;
+/* Ajustes específicos para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .resultado pre {
+    font-size: 0.9em; /* Reduce el tamaño de la fuente en pantallas más pequeñas */
+    padding: 15px; /* Ajusta el espaciado interno */
+    line-height: 1.5; /* Ajusta el espaciado entre líneas */
+  }
 }
+
+@media (max-width: 480px) {
+  .resultado pre {
+    font-size: 0.8em; /* Reduce aún más el tamaño de la fuente para pantallas muy pequeñas */
+    padding: 10px; /* Ajusta el espaciado interno */
+    line-height: 2.4; /* Ajusta el espaciado entre líneas */
+    
+  }
+}
+
+

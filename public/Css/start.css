@@ -64,25 +64,7 @@ body {
     border-radius: 5px;
   }
   
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
   
-    .nav {
-      display: block;
-      width: 100%;
-    }
-  
-    .nav-link {
-      display: block;
-      padding: 10px;
-      text-align: center;
-      width: 100%;
-    }
-  }
 /* Main Content */
 main {
     flex: 1;
@@ -132,7 +114,7 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #6B8A47;
+    background-color: #9fb285;
     transition: transform 0.5s ease;
     transform: translateY(100%);
     z-index: -1;
@@ -151,7 +133,7 @@ main {
   }
   
   .card:hover .card-image {
-    background-color: #F4D4AB;
+    background-color: #f8f6f5;
     transform: translateY(-0.5rem);
   }
   
@@ -232,7 +214,7 @@ main {
 
 /* Info Section */
 .section-muted {
-    background-color: f9f7f3;
+    background-color: #f9f7f3;
     text-align: center;
     padding: 2rem;
 }
@@ -292,34 +274,189 @@ footer {
     text-decoration: underline;
 }
 .section-muted{
-  color: #56682c;
-  background-color: #f4f1ea;
+  color: #213d1b;
+  background-color: #dfe5d6;
 }
-/* Responsive Design */
-@media (max-width: 768px) {
-    .section {
-        padding: 1rem;
-    }
+/* Diseño responsive para pantallas pequeñas (de 300px a 720px) */
+/* Diseño responsive para pantallas pequeñas (de 300px a 720px) */
+@media (min-width: 300px) and (max-width: 720px) {
+  .section {
+      padding: 1rem;
+  }
 
-    .card {
-        flex: 1 1 100%;
-        margin-bottom: 1rem;
-    }
+  /* Contenedor de tarjetas con padding en los laterales */
+  .cards-container {
+      display: flex;
+      flex-direction: column; /* Alinea las tarjetas verticalmente */
+      gap: 1rem; /* Añade espacio entre las tarjetas */
+      padding: 0 1rem; /* Añade espacio a los lados izquierdo y derecho del contenedor */
+  }
 
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  /* Estilo para cada tarjeta */
+  .card {
+      width: calc(100% - 2rem); /* Ajusta el ancho de la tarjeta para tener espacio a los lados */
+      box-sizing: border-box; /* Incluye el padding y border en el ancho total */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centra el contenido de la tarjeta */
+      padding: 1rem;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
-    .nav {
-        margin-left: 0;
-        margin-top: 1rem;
-        justify-content: space-around;
-        width: 100%;
-    }
+  /* La imagen dentro de la tarjeta mantiene la forma circular */
+  .card-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+  }
 
-    footer {
-        flex-direction: column;
-        gap: 1rem;
-    }
+  /* La imagen se adapta y mantiene el círculo */
+  .card-img {
+      width: 80px; /* Ajusta el tamaño de la imagen */
+      height: 80px;
+      border-radius: 50%; /* Hace que la imagen sea circular */
+      object-fit: cover; /* Asegura que la imagen no se distorsione */
+  }
+
+  /* Estilo para el título de la tarjeta */
+  .card-title {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+  }
+
+  /* Estilo para la descripción de la tarjeta */
+  .card-description {
+      text-align: center;
+      font-size: 1rem;
+      color: #666;
+  }
+}
+
+
+/* Diseño responsive para pantallas medianas (entre 730px y 1000px) */
+@media (min-width: 730px) and (max-width: 1000px) {
+
+  .section {
+      padding: 1rem;
+  }
+
+  .card {
+      flex: 1 1 calc(50% - 2rem); /* Ocupa el 50% del ancho disponible menos márgenes */
+      margin-bottom: 1rem; /* Añade espacio debajo de las tarjetas */
+  }
+
+  .card-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+  }
+
+  .card-img {
+      width: 100px; /* Ajusta el tamaño de la imagen */
+      height: 100px;
+      border-radius: 50%; /* Imagen circular */
+      object-fit: cover; /* Evita distorsión de la imagen */
+  }
+}
+
+/* Diseño para pantallas más grandes */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* Espacio entre las tarjetas */
+  justify-content: space-between;
+}
+
+.card {
+  flex: 1 1 calc(25% - 1rem); /* 4 tarjetas por fila en pantallas grandes */
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Efecto hover para ampliar ligeramente la tarjeta */
+}
+
+.card-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card-img {
+  width: 120px; /* Tamaño de imagen mayor para pantallas grandes */
+  height: 120px;
+  border-radius: 50%; /* Hace que la imagen siempre sea circular */
+  object-fit: cover; /* Asegura que la imagen no se distorsione */
+}
+
+
+
+
+/* Diseño responsive para pantallas de 930px en adelante */
+@media (min-width: 1100px) {
+  .section {
+      padding: 1rem;
+  }
+
+  /* Contenedor de tarjetas en disposición horizontal */
+  .cards-container {
+      display: flex;
+      flex-wrap: nowrap; /* Evita que las tarjetas se envuelvan en una nueva línea */
+      gap: 1rem; /* Añade espacio entre las tarjetas */
+      
+      padding: 0 1rem; /* Añade espacio a los lados del contenedor */
+  }
+
+  /* Estilo para cada tarjeta */
+  .card {
+      flex: 1 0 calc(20% - 1rem); /* Ocupa el 25% del ancho disponible menos márgenes */
+      box-sizing: border-box; /* Incluye el padding y border en el ancho total */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centra el contenido de la tarjeta */
+      padding: 1rem;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* La imagen dentro de la tarjeta mantiene la forma circular */
+  .card-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+  }
+
+  /* La imagen se adapta y mantiene el círculo */
+  .card-img {
+      width: 100px; /* Ajusta el tamaño de la imagen según el diseño */
+      height: 100px;
+      border-radius: 50%; /* Hace que la imagen sea circular */
+      object-fit: cover; /* Asegura que la imagen no se distorsione */
+  }
+
+  /* Estilo para el título de la tarjeta */
+  .card-title {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+  }
+
+  /* Estilo para la descripción de la tarjeta */
+  .card-description {
+      text-align: center;
+      font-size: 1rem;
+      color: #666;
+  }
 }

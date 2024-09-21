@@ -281,3 +281,84 @@ display: none; /* Oculta los elementos con esta clase */
     }
   }
 }  
+/* Ajustes de tamaño de fuente para pantallas entre 1270px y 800px */
+@media screen and (max-width: 1280px) and (min-width: 800px) {
+  body {
+      font-size: calc(100% - 3px); /* Reduce el tamaño de la fuente en 3px */
+  }
+
+  .nav-tabs {
+      font-size: calc(18px - 7px); /* Reduce el tamaño de la fuente de las pestañas */
+  }
+
+  .nav-tab a {
+      font-size: calc(18px - px); /* Reduce el tamaño de la fuente de los enlaces */
+  }
+
+  h1 {
+      font-size: calc(30px - 3px); /* Ajusta el tamaño del título principal */
+  }
+}
+
+/* Ajustes de tamaño de fuente para pantallas más pequeñas */
+@media screen and (max-width: 800px) {
+  body {
+      font-size: 90%; /* Disminuye el tamaño de la fuente al 90% */
+  }
+
+  .nav-tabs {
+      font-size: 16px; /* Disminuye el tamaño de la fuente de las pestañas */
+  }
+
+  .nav-tab a {
+      font-size: 14px; /* Disminuye el tamaño de la fuente de los enlaces */
+  }
+
+  h1 {
+      font-size: 24px; /* Ajusta el tamaño del título principal */
+  }
+}
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-links li {
+  margin: 0 15px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .footer-links {
+      flex-direction: column;
+      margin-top: 10px;
+  }
+  
+  .footer-links li {
+      margin: 5px 0;
+  }
+}
+

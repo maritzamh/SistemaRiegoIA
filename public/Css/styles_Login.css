@@ -1,420 +1,634 @@
-:root {
-    /* Variables de color */
-    --blue: #478b3ee6;
-    --pink: rgba(255, 131, 195, 0.4);
-    --white: rgba(255, 255, 255, 0.9);
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Estilo para el fondo de la página */
-.background {
-    background-image: url(https://images.unsplash.com/photo-1554692760-4b7e52978fb6?ixlib=rb-1.2.1&ixid=eyJhcBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=8);
-    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-color: #252746; /* Color de fondo en caso de que la imagen no cargue */
-    background-position: center; /* Centra la imagen en el fondo */
-    width: 100vw; /* Ancho completo de la ventana */
-    height: 100vh; /* Altura completa de la ventana */
-    position: absolute; /* Posiciona el elemento absolutamente */
-    z-index: 0; /* Coloca el fondo por detrás de otros elementos */
-    top: 0;
-    left: 0;
-}
-
-/* Estilo para la textura del fondo */
-.background-texture {
-    background: linear-gradient(
-        to top,
-        rgba(175, 225, 125, 0.9),
-        rgba(255, 255, 255, 0.9)
-    ); /* Gradiente de fondo que va de abajo hacia arriba */
-    background-size: cover; /* Asegura que el gradiente cubra todo el fondo */
-    width: 100vw; /* Ancho completo de la ventana */
-    height: 100vh; /* Altura completa de la ventana */
-    position: absolute; /* Posiciona el elemento absolutamente */
-    z-index: 0; /* Coloca la textura por detrás de otros elementos */
-    top: 0;
-    left: 0;
-}
-
-/* Estilo para los encabezados de nivel 1 */
-h1 {
-    font-weight: bold; /* Negrita */
-    font-size: 34px; /* Tamaño de fuente pequeño */
-    margin: 0; /* Elimina el margen por defecto */
-    text-align: center; /* Centra el texto */
-    letter-spacing: 0.5px; /* Espaciado entre letras */
-}
-
-/* Estilo para los encabezados de nivel 2 */
-h2 {
-    text-align: center; /* Centra el texto */
-}
-
-/* Estilo para los párrafos */
-p {
-    font-size: 14px; /* Tamaño de fuente pequeño */
-    font-weight: 100; /* Peso de fuente ligero */
-    line-height: 20px; /* Altura de línea para mejor legibilidad */
-    letter-spacing: 0.5px; /* Espaciado entre letras */
-    margin: 20px 0 30px; /* Margen superior e inferior */
-}
-
-/* Estilo para los botones */
-button {
-    border-radius: 20px; /* Bordes redondeados */
-    border: 1px solid #888F4F; /* Borde del botón */
-    background-color: #888F4F; /* Color de fondo del botón */
-    color: #FFFFFF; /* Color del texto del botón */
-    font-size: 12px; /* Tamaño de fuente del botón */
-    font-weight: bold; /* Negrita */
-    padding: 12px 45px; /* Espaciado interno del botón */
-    letter-spacing: 1px; /* Espaciado entre letras */
-    text-transform: uppercase; /* Texto en mayúsculas */
-    transition: transform 80ms ease-in; /* Transición de escala al hacer clic */
-}
-
-button:active {
-    transform: scale(0.95); /* Efecto de reducción al hacer clic */
-}
-
-button:focus {
-    outline: none; /* Elimina el borde de enfoque */
-}
-
-button.ghost {
-    background-color: transparent; /* Fondo transparente */
-    border-color: #FFFFFF; /* Borde blanco */
-}
-
-/* Estilo para los formularios */
-form {
-    background-color: #FFFFFF; /* Fondo blanco para el formulario */
-    display: flex; /* Usa Flexbox para el diseño */
-    align-items: center; /* Alinea verticalmente */
-    justify-content: center; /* Alinea horizontalmente */
-    flex-direction: column; /* Coloca los elementos en columna */
-    padding: 0 50px; /* Espaciado interno horizontal */
-    height: 100%; /* Altura completa del contenedor padre */
-    text-align: center; /* Centra el texto */
-}
-
-/* Estilo para los campos de entrada */
+body,
 input {
-    background-color: #eee; /* Color de fondo claro */
-    border: none; /* Elimina el borde */
-    padding: 12px 15px; /* Espaciado interno */
-    margin: 8px 0; /* Margen superior e inferior */
-    width: 100%; /* Ancho completo del contenedor */
+  font-family: "Poppins", sans-serif;
 }
 
-/* Estilo para el contenedor principal */
 .container {
-    background-color: #fff; /* Fondo blanco */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-                0 10px 10px rgba(0,0,0,0.22); /* Sombra del contenedor */
-    position: relative; /* Posiciona el contenedor en relación a su posición normal */
-    overflow: hidden; /* Oculta el contenido que se desborda */
-    width: 768px; /* Ancho fijo del contenedor */
-    max-width: 100%; /* Ancho máximo del 100% del contenedor padre */
-    min-height: 480px; /* Altura mínima del contenedor */
-    padding: 20px; /* Espaciado interno */
-    
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-/* Estilo para los contenedores de formulario dentro de .container */
-.form-container {
-    position: absolute; /* Posiciona el contenedor de formulario absolutamente */
-    top: 0;
-    height: 100%; /* Altura completa del contenedor padre */
-    transition: all 0.6s ease-in-out; /* Transición suave para el cambio de estado */
+.forms-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
-/* Estilo para el contenedor de inicio de sesión */
-.sign-in-container {
-    left: 0; /* Posiciona a la izquierda */
-    width: 50%; /* Ancho del 50% */
-    z-index: 2; /* Nivel de apilamiento */
+.signin-signup {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 75%;
+  width: 50%;
+  transition: 1s 0.7s ease-in-out;
+  display: grid;
+  grid-template-columns: 1fr;
+  z-index: 5;
 }
 
-/* Cambio de posición cuando el panel está activo */
-.container.right-panel-active .sign-in-container {
-    transform: translateX(100%); /* Desplaza hacia la derecha */
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0rem 5rem;
+  transition: all 0.2s 0.7s;
+  overflow: hidden;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
 }
 
-/* Estilo para el contenedor de registro */
-.sign-up-container {
-    left: 0; /* Posiciona a la izquierda */
-    width: 50%; /* Ancho del 50% */
-    opacity: 0; /* Inicialmente invisible */
-    z-index: 1; /* Nivel de apilamiento */
+form.sign-up-form {
+  opacity: 0;
+  z-index: 1;
 }
 
-/* Cambio de posición cuando el panel está activo */
-.container.right-panel-active .sign-up-container {
-    transform: translateX(100%); /* Desplaza hacia la derecha */
-    opacity: 1; /* Hace visible */
-    z-index: 5; /* Nivel de apilamiento */
-    animation: show 0.6s; /* Animación para la aparición */
+form.sign-in-form {
+  z-index: 2;
 }
 
-/* Animación para la aparición */
-@keyframes show {
-    0%, 49.99% {
-        opacity: 0; /* Inicialmente invisible */
-        z-index: 1; /* Nivel de apilamiento */
-    }
-    50%, 100% {
-        opacity: 1; /* Hace visible */
-        z-index: 5; /* Nivel de apilamiento */
-    }
+.title {
+  font-size: 2.2rem;
+  color: #444;
+  margin-bottom: 10px;
 }
 
-/* Estilo para el contenedor de superposición */
-.overlay-container {
-    position: absolute; /* Posiciona el contenedor de superposición absolutamente */
-    top: 0;
-    left: 50%; /* Posiciona a la mitad de la ventana */
-    width: 50%; /* Ancho del 50% */
-    height: 100%; /* Altura completa del contenedor padre */
-    overflow: hidden; /* Oculta el contenido que se desborda */
-    transition: transform 0.6s ease-in-out; /* Transición suave para el cambio de estado */
-    z-index: 100; /* Nivel de apilamiento alto */
-     /* Elimina los márgenes predeterminados del cuerpo del documento */
-     /* Alinea verticalmente el contenido en el centro del cuerpo del documento */
-     align-items: center;
+.input-field {
+  max-width: 380px;
+  width: 100%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 55px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
 }
 
-/* Cambio de posición cuando el panel está activo */
-.container.right-panel-active .overlay-container {
-    transform: translateX(-100%); /* Desplaza hacia la izquierda */
+.input-field i {
+  text-align: center;
+  line-height: 55px;
+  color: #acacac;
+  transition: 0.5s;
+  font-size: 1.1rem;
 }
 
-/* Estilo para la superposición */
-.overlay {
-    background-image: linear-gradient(rgba(108, 237, 108, 0.5), rgba(0, 128, 0, 0.5)), /* Color verde semitransparente */
-                      url(https://images.unsplash.com/photo-1554692760-4b7e52978fb6?ixlib=rb-1.2.1&ixid=eyJhcBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=8); /* Imagen de fondo */
-    background-size: cover;
-    background-position: center;
-    z-index: 0; /* Mantiene la imagen detrás del contenido */
-    width: 100vw; /* Ancho del contenedor igual al ancho de la ventana de visualización */
-    height: 100vh; /* Altura del contenedor igual a la altura de la ventana de visualización */
-    position: absolute; /* Posiciona el contenedor de textura en la parte supesrior del fondo */
-    z-index: 0; /* Establece el índice de z para que esté detrás de otros elementos */
-    top: 0; /* Alinea el contenedor en la parte superior */
-    left: 0; /* Alinea el contenedor a la izquierda */
-    background-repeat: no-repeat; /* Evita que se repita */
-    background-size: cover; /* Asegura que el gradiente cubra todo el fondo */
-    background-position: 0 0; /* Posiciona el gradiente */
-    color: #FFFFFF; /* Color del texto */
-    position: relative; /* Posiciona en relación a su posición normal */
-    left: -100%; /* Posiciona a la izquierda */
-    height: 100%; /* Altura completa del contenedor padre */
-    width: 200%; /* Ancho del 200% para cubrir el contenedor */
-    transform: translateX(0); /* Posición inicial */
-    transition: transform 0.6s ease-in-out; /* Transición suave para el cambio de estado */
+.input-field input {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
 }
 
-/* Cambio de posición cuando el panel está activo */
-.container.right-panel-active .overlay {
-    transform: translateX(50%); /* Desplaza hacia la derecha */
+.input-field input::placeholder {
+  color: #aaa;
+  font-weight: 500;
 }
 
-/* Estilo para el panel de superposición */
-.overlay-panel {
-    position: absolute; /* Posiciona absolutamente */
-    display: flex; /* Usa Flexbox para el diseño */
-    align-items: center; /* Alinea verticalmente */
-    justify-content: center; /* Alinea horizontalmente */
-    flex-direction: column; /* Coloca los elementos en columna */
-    padding: 0 10px; /* Espaciado interno horizontal */
-    top: 0;
-    height: 100%; /* Altura completa del contenedor padre */
-    width: 50%; /* Ancho del 50% */
-    transform: translateX(0); /* Posición inicial */
-    transition: transform 0.6s ease-in-out; /* Transición suave para el cambio de estado */
+.social-text {
+  padding: 0.7rem 0;
+  font-size: 1rem;
 }
 
-/* Estilo para el panel de superposición a la izquierda */
-.overlay-left {
-    transform: translateX(-20%); /* Desplaza hacia la izquierda */
-    text-align: center; /* Centra el texto */
+.social-media {
+  display: flex;
+  justify-content: center;
+}
+
+.social-icon {
+  height: 46px;
+  width: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.45rem;
+  color: #333;
+  border-radius: 50%;
+  border: 1px solid #333;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+
+.social-icon:hover {
+  color: #136b0c;
+  border-color: #15a70b;
+}
+
+.btn {
+  width: 150px;
+  background-color: #1EA814;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  background-color: #104f0c;
+}
+.panels-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.container:before {
+  content: "";
+  position: absolute;
+  height: 2000px;
+  width: 2000px;
+  top: -10%;
+  right: 48%;
+  transform: translateY(-50%);
+  background-image: linear-gradient(-45deg, #12640C 0%, #188610 100%);
+  transition: 1.8s ease-in-out;
+  border-radius: 50%;
+  z-index: 6;
+}
+
+.image {
+  width: 100%;
+  transition: transform 1.1s ease-in-out;
+  transition-delay: 0.4s;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  text-align: center;
+  z-index: 6;
+}
+
+.left-panel {
+  pointer-events: all;
+  padding: 3rem 17% 2rem 12%;
+}
+
+.right-panel {
+  pointer-events: none;
+  padding: 3rem 12% 2rem 17%;
+}
+
+.panel .content {
+  color: #fff;
+  transition: transform 0.9s ease-in-out;
+  transition-delay: 0.6s;
+}
+
+.panel h3 {
+  font-weight: 600;
+  line-height: 1;
+  font-size: 1.5rem;
+}
+
+.panel p {
+  font-size: 0.95rem;
+  padding: 0.7rem 0;
+}
+
+.btn.transparent {
+  margin: 0;
+  background: none;
+  border: 2px solid #fff;
+  width: 130px;
+  height: 41px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.right-panel .image,
+.right-panel .content {
+  transform: translateX(800px);
+}
+
+/* ANIMATION */
+
+.container.sign-up-mode:before {
+  transform: translate(100%, -50%);
+  right: 52%;
+}
+
+.container.sign-up-mode .left-panel .image,
+.container.sign-up-mode .left-panel .content {
+  transform: translateX(-800px);
+}
+
+.container.sign-up-mode .signin-signup {
+  left: 25%;
+}
+
+.container.sign-up-mode form.sign-up-form {
+  opacity: 1;
+  z-index: 2;
+}
+
+.container.sign-up-mode form.sign-in-form {
+  opacity: 0;
+  z-index: 1;
+}
+
+.container.sign-up-mode .right-panel .image,
+.container.sign-up-mode .right-panel .content {
+  transform: translateX(0%);
+}
+
+.container.sign-up-mode .left-panel {
+  pointer-events: none;
+}
+
+.container.sign-up-mode .right-panel {
+  pointer-events: all;
+}
+
+@media (max-width: 870px) {
+  .container {
+    min-height: 800px;
+    height: 100vh;
+  }
+  .signin-signup {
+    width: 100%;
+    top: 95%;
+    transform: translate(-50%, -100%);
+    transition: 1s 0.8s ease-in-out;
+  }
+
+  .signin-signup,
+  .container.sign-up-mode .signin-signup {
+    left: 50%;
+  }
+
+  .panels-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+  }
+
+  .panel {
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
+    padding: 2.5rem 8%;
+    grid-column: 1 / 2;
+  }
+
+  .right-panel {
+    grid-row: 3 / 4;
+  }
+
+  .left-panel {
+    grid-row: 1 / 2;
+  }
+
+  .image {
+    width: 200px;
+    transition: transform 0.9s ease-in-out;
+    transition-delay: 0.6s;
+  }
+
+  .panel .content {
+    padding-right: 15%;
+    transition: transform 0.9s ease-in-out;
+    transition-delay: 0.8s;
+  }
+
+  .panel h3 {
+    font-size: 1.2rem;
+  }
+
+  .panel p {
+    font-size: 0.7rem;
+    padding: 0.5rem 0;
+  }
+
+  .btn.transparent {
+    width: 110px;
+    height: 35px;
+    font-size: 0.7rem;
+  }
+
+  .container:before {
+    width: 1500px;
+    height: 1500px;
+    transform: translateX(-50%);
+    left: 30%;
+    bottom: 68%;
+    right: initial;
+    top: initial;
+    transition: 2s ease-in-out;
+  }
+
+  .container.sign-up-mode:before {
+    transform: translate(-50%, 100%);
+    bottom: 32%;
+    right: initial;
+  }
+
+  .container.sign-up-mode .left-panel .image,
+  .container.sign-up-mode .left-panel .content {
+    transform: translateY(-300px);
+  }
+
+  .container.sign-up-mode .right-panel .image,
+  .container.sign-up-mode .right-panel .content {
+    transform: translateY(0px);
+  }
+
+  .right-panel .image,
+  .right-panel .content {
+    transform: translateY(300px);
+  }
+
+  .container.sign-up-mode .signin-signup {
+    top: 5%;
+    transform: translate(-50%, 0);
+  }
+}
+/* Resetea los márgenes y establece el tamaño del viewport para ocupar toda la ventana del navegador */
+html, body {
+    margin: 0; /* Elimina el margen predeterminado del navegador */
+    height: 100vh; /* Establece la altura del cuerpo al 100% del viewport */
+    width: 100vw; /* Establece el ancho del cuerpo al 100% del viewport */
+  }
+  
+  /* Establece la fuente y el fondo del cuerpo */
+  body {
+    font: 100% system-ui, sans-serif; /* Define la fuente del cuerpo como System UI, con fuente secundaria sans-serif */
+  }
+  
+  /* Estilo para el título principal (h1) */
+  /* Ocultar el checkbox para que no sea visible en ninguna pantalla */
+  input[type="checkbox"] {
+    display: none; /* Oculta el checkbox completamente */
+  }
+  
+  /* Clase para centrar el texto */
+  .center {
+    text-align: center; /* Centra el texto dentro del contenedor */
+  }
+  
+  /* Estilo para el contenedor de la navegación */
+  .nav-wrapper {
+    display: flex; /* Usa flexbox para alinear los elementos hijos */
+    position: relative; /* Posiciona el contenedor de navegación relativamente */
+    flex-direction: row; /* Organiza los elementos en fila */
+    flex-wrap: nowrap; /* Impide que los elementos se envuelvan en varias líneas */
+    align-items: center; /* Alinea los elementos verticalmente en el centro */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
+    margin: auto; /* Centra el contenedor horizontalmente */
+    width: 90%; /* Define el ancho del contenedor como el 90% del ancho del viewport */
+    height: 80px; /* Establece la altura del contenedor */
+    border-radius: 0 0 15px 15px; /* Redondea las esquinas inferiores del contenedor */
+    padding: 0 25px; /* Agrega espacio interno a los lados del contenedor */
+    z-index: 2; /* Establece la profundidad del contenedor en el apilamiento de elementos */
+    background: #fff; /* Establece el color de fondo del contenedor a blanco */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Aplica una sombra sutil al contenedor */
+  }
+  
+  /* Estilo para el contenedor del logo */
+  .logo-container {
+    display: flex; /* Usa flexbox para alinear el contenido del logo */
+    justify-content: center; /* Centra el logo horizontalmente */
+    align-items: center; /* Centra el logo verticalmente */
+  }
+  
+  /* Estilo para el logo */
+  .logo {
+    height: 60px; /* Establece la altura del logo */
+  }
+  
+  /* Estilo para la lista de pestañas de navegación */
+  .nav-tabs {
+    display: flex; /* Usa flexbox para alinear las pestañas de navegación */
+    font-weight: 600; /* Define el peso de la fuente como semi-negrita */
+    font-size: 18px; /* Establece el tamaño de la fuente */
+    list-style: none; /* Elimina los puntos de la lista */
+    margin: 0; /* Elimina el margen de la lista */
+    padding: 0; /* Elimina el padding de la lista */
+  }
+  
+  /* Estilo para cada pestaña de navegación */
+  .nav-tab {
+    position: relative; /* Posiciona cada pestaña relativamente */
+  }
+  
+  /* Estilo para los enlaces dentro de las pestañas de navegación */
+  .nav-tab a {
+    display: block; /* Hace que el enlace sea un bloque para ocupar toda la pestaña */
+    padding: 15px 25px; /* Agrega espacio interno a los enlaces */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: #333; /* Establece el color del texto del enlace */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Agrega una transición suave al color y al fondo */
+    border-radius: 5px; /* Redondea las esquinas de los enlaces */
+  }
+  
+  /* Estilo para el estado hover de los enlaces en las pestañas de navegación */
+  .nav-tab a:hover {
+    color: #fff; /* Cambia el color del texto del enlace al pasar el cursor */
+    background-color: #639767; /* Cambia el color de fondo del enlace al pasar el cursor */
+  }
+  
+  /* Estilo para el subrayado de los enlaces */
+  .nav-tab a::after {
+    content: ""; /* Define el contenido del pseudo-elemento como vacío */
+    position: absolute; /* Posiciona el subrayado absolutamente en relación con el enlace */
+    left: 50%; /* Posiciona el subrayado en el centro horizontal del enlace */
+    bottom: 0; /* Posiciona el subrayado en la parte inferior del enlace */
+    width: 0; /* Inicialmente el ancho del subrayado es 0 */
+    height: 2px; /* Define la altura del subrayado */
+    background: #cdd358; /* Establece el color del subrayado */
+    transition: width 0.3s ease, left 0.3s ease; /* Agrega una transición suave al ancho y la posición del subrayado */
+  }
+  
+  
+  /* Estilo para el estado hover del subrayado de los enlaces */
+  .nav-tab a:hover::after {
+    width: 100%; /* Expande el ancho del subrayado al pasar el cursor */
+    left: 0; /* Ajusta la posición del subrayado al inicio del enlace */
+  }
+  
+
+/* Estilos para el mensaje de error */
+  .error-message {
+    background-color: #f8d7da; /* Color de fondo rojo claro */
+    color: #721c24; /* Color de texto rojo oscuro */
+    border: 1px solid #f5c6cb; /* Borde rojo suave */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 12px; /* Espaciado interno */
+    margin: 10px 0; /* Margen entre otros elementos */
+    font-size: 16px; /* Tamaño del texto */
+    font-family: 'Arial', sans-serif; /* Fuente */
+    text-align: center; /* Centrado del texto */
+    display: none; /* Oculto por defecto */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out; /* Transiciones suaves */
+    transform: translateY(-10px); /* Inicialmente desplazado hacia arriba */
+  }
+
+  .error-message.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0); /* Vuelve a la posición original */
+  }
+
+  .error-message.close {
+    opacity: 0;
+    transform: translateY(-10px); /* Desplazado hacia arriba al ocultarse */
+  }
+  /* Estilos para los mensajes de error */
+.register-error-message {
+  background-color: #f8d7da; /* Color de fondo rojo claro */
+  color: #721c24; /* Color del texto rojo oscuro */
+  border: 1px solid #f5c6cb; /* Borde rojo claro */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 12px; /* Espaciado interno */
+  margin: 10px 0; /* Margen superior e inferior */
+  font-size: 16px; /* Tamaño del texto */
+  font-family: 'Arial', sans-serif; /* Fuente del texto */
+  text-align: center; /* Centrado del texto */
+  display: none; /* Oculto por defecto */
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out; /* Transiciones suaves */
+  transform: translateY(-10px); /* Inicialmente desplazado hacia arriba */
 }
 
-/* Cambio de posición cuando el panel está activo */
-.container.right-panel-active .overlay-left {
-    transform: translateX(0); /* Posiciona en el centro */
+/* Mostrar el mensaje de error */
+.register-error-message.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0); /* Regresa a la posición original */
 }
 
-/* Estilo para el panel de superposición a la derecha */
-.overlay-right {
-    right: 0; /* Posiciona a la derecha */
-    transform: translateX(0); /* Posición inicial */
-
+/* Ocultar el mensaje de error */
+.register-error-message.close {
+  opacity: 0;
+  transform: translateY(-10px); /* Desplazado hacia arriba al ocultarse */
 }
 
-/* Cambio de posición cuando el panel está activo */
-.container.right-panel-active .overlay-right {
-    transform: translateX(20%); /* Desplaza hacia la derecha */
+/* Estilos para los mensajes de éxito */
+.register-success-message {
+  background-color: #d4edda; /* Color de fondo verde claro */
+  color: #155724; /* Color del texto verde oscuro */
+  border: 1px solid #c3e6cb; /* Borde verde claro */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 12px; /* Espaciado interno */
+  margin: 10px 0; /* Margen superior e inferior */
+  font-size: 16px; /* Tamaño del texto */
+  font-family: 'Arial', sans-serif; /* Fuente del texto */
+  text-align: center; /* Centrado del texto */
+  display: none; /* Oculto por defecto */
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out; /* Transiciones suaves */
+  transform: translateY(-10px); /* Inicialmente desplazado hacia arriba */
 }
 
-/* Estilo para los contenedores de redes sociales */
-.social-container {
-    margin: 20px 0; /* Margen superior e inferior */
+/* Mostrar el mensaje de éxito */
+.register-success-message.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0); /* Regresa a la posición original */
 }
 
-/* Estilo para los enlaces de redes sociales */
-.social-container a {
-    border: 1px solid #DDDDDD; /* Borde de los enlaces */
-    border-radius: 50%; /* Bordes redondeados para hacerlos circulares */
-    display: inline-flex; /* Usa Flexbox para el diseño */
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
-    margin: 0 5px; /* Margen horizontal */
-    height: 40px; /* Altura del enlace */
-    width: 40px; /* Ancho del enlace */
+/* Ocultar el mensaje de éxito */
+.register-success-message.close {
+  opacity: 0;
+  transform: translateY(-10px); /* Desplazado hacia arriba al ocultarse */
+}
+.message {
+  padding: 10px 15px; /* Espaciado interno */
+  border-radius: 5px; /* Esquinas redondeadas */
+  margin: 10px 0; /* Margen superior e inferior */
+  font-size: 16px; /* Tamaño de fuente */
+  transition: opacity 0.3s ease; /* Transición suave */
 }
 
-/* Estilo para las tarjetas */
-.card {
-    position: relative; /* Posiciona en relación a su posición normal */
-    width: 300px; /* Ancho fijo */
-    height: 350px; /* Altura fija */
-    background: #043A52; /* Fondo de la tarjeta */
-    margin: 0 20px; /* Margen horizontal */
-    border-radius: 4px; /* Bordes redondeados */
-    box-shadow: 0 2px 10px rgba(12, 223, 163, 0.2); /* Sombra de la tarjeta */
-    margin-bottom: 50px; /* Margen inferior */
+.success {
+  background-color: #d4edda; /* Color de fondo para el mensaje de éxito */
+  color: #155724; /* Color del texto para el mensaje de éxito */
+  border: 1px solid #c3e6cb; /* Borde verde */
+  opacity: 0; /* Comienza oculto */
 }
 
-/* Estilo para el pseudo-elemento antes de la tarjeta */
-.card:before,
-.card:after {
-    content: ""; /* Crea un pseudo-elemento vacío */
-    position: absolute; /* Posiciona absolutamente */
-    top: 0;
-    left: 0;
-    width: 100%; /* Ancho completo del contenedor */
-    height: 100%; /* Altura completa del contenedor */
-    border-radius: 4px; /* Bordes redondeados */
-    background: #043A52; /* Fondo de la tarjeta */
-    transition: 0.5s; /* Transición suave */
-    z-index: -1; /* Coloca el pseudo-elemento detrás del contenido */
+.error {
+  background-color: #f8d7da; /* Color de fondo para el mensaje de error */
+  color: #721c24; /* Color del texto para el mensaje de error */
+  border: 1px solid #f5c6cb; /* Borde rojo */
+  opacity: 0; /* Comienza oculto */
 }
 
-/* Estilo para el pseudo-elemento antes de la tarjeta al pasar el ratón por encima */
-.card:hover:before {
-    transform: rotate(20deg); /* Rotea el elemento */
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2); /* Aumenta la sombra */
+/* Mostrar el mensaje con opacidad */
+.message.show {
+  opacity: 1; /* Muestra el mensaje */
 }
 
-/* Estilo para el pseudo-elemento después de la tarjeta al pasar el ratón por encima */
-.card:hover:after {
-    transform: rotate(10deg); /* Rotea el elemento */
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2); /* Aumenta la sombra */
-}
 
-/* Estilo para la caja de imagen dentro de la tarjeta */
-.card .imgBx {
-    position: absolute; /* Posiciona absolutamente */
-    top: 10px; /* Espacio desde la parte superior */
-    left: 10px; /* Espacio desde la izquierda */
-    bottom: 10px; /* Espacio desde la parte inferior */
-    right: 10px; /* Espacio desde la derecha */
-    background: #222; /* Fondo oscuro */
-    transition: 0.5s; /* Transición suave */
-    z-index: 1; /* Nivel de apilamiento */
-}
+  /* Estilo para el contenedor de navegación en pantallas pequeñas */
+  @media screen and (max-width: 800px) {
+    .nav-tabs {
+      font-size: 12px; /* Reduce el tamaño de la fuente en pantallas pequeñas */
+    }
+  
+    .logo {
+      height: 30px; /* Reduce el tamaño del logo en pantallas pequeñas */
+    }
+    .logo-text{
+      font-size: 10;
+    
+    }
+  }
+  
 
-/* Estilo para la caja de imagen dentro de la tarjeta al pasar el ratón por encima */
-.card:hover .imgBx {
-    bottom: 80px; /* Desplaza la caja de imagen hacia arriba */
-}
+@media (max-width: 570px) {
+  form {
+    padding: 0 1.5rem;
+    overflow: visible; 
+  }
 
-/* Estilo para las imágenes dentro de la caja de imagen */
-.card .imgBx img {
-    position: absolute; /* Posiciona absolutamente */
-    top: 0;
-    left: 0;
-    width: 100%; /* Ancho completo del contenedor */
-    height: 100%; /* Altura completa del contenedor */
-    object-fit: cover; /* Asegura que la imagen cubra el contenedor */
-}
+  .image {
+    display: none;
+  }
+  .panel .content {
+    padding: 0.5rem 1rem;
+  }
+  .container {
+    padding: 1.5rem;
+  }
 
-/* Estilo para los detalles de la tarjeta */
-.card .details {
-    position: absolute; /* Posiciona absolutamente */
-    left: 10px; /* Espacio desde la izquierda */
-    right: 10px; /* Espacio desde la derecha */
-    bottom: 10px; /* Espacio desde la parte inferior */
-    height: 60px; /* Altura fija */
-    text-align: center; /* Centra el texto */
-}
+  .container:before {
+    bottom: 72%;
+    left: 50%;
+  }
 
-/* Estilo para el encabezado dentro de los detalles de la tarjeta */
-.card .details h2 {
-    margin: 0; /* Elimina el margen por defecto */
-    padding: 0; /* Elimina el espaciado por defecto */
-    font-weight: 600; /* Peso de fuente medio */
-    font-size: 20px; /* Tamaño de fuente grande */
-    color: #83C2C7; /* Color del texto */
-    text-transform: uppercase; /* Texto en mayúsculas */
-}
-
-/* Estilo para el span dentro del encabezado de detalles de la tarjeta */
-.card .details h2 span {
-    font-weight: 500; /* Peso de fuente medio */
-    font-size: 16px; /* Tamaño de fuente medio */
-    color: #50A182; /* Color del texto */
-    display: block; /* Bloquea el elemento */
-    margin-top: 5px; /* Margen superior */
-}
-
-/* Estilo para los botones de redes sociales dentro de la tarjeta */
-.card .social-buttons {
-    display: flex; /* Usa Flexbox para el diseño */
-    justify-content: space-around; /* Espacia los elementos */
-    width: 100%; /* Ancho completo del contenedor */
-    margin-top: 10px; /* Margen superior */
-    margin-bottom: 30px; /* Margen inferior */
-}
-
-/* Estilo para los enlaces de botones sociales dentro de la tarjeta */
-.card .social-buttons a {
-    display: inline-block; /* Muestra como bloque en línea */
-    width: 40px; /* Ancho fijo */
-    height: 40px; /* Altura fija */
-    border-radius: 50%; /* Bordes redondeados para hacerlos circulares */
-    overflow: hidden; /* Oculta el desbordamiento */
-}
-
-/* Estilo para las imágenes dentro de los botones sociales */
-.card .social-buttons img {
-    width: 100%; /* Ancho completo del contenedor */
-    height: 100%; /* Altura completa del contenedor */
-    object-fit: cover; /* Asegura que la imagen cubra el contenedor */
-}
-
-/* Estilo para el logotipo en la clase logo1 */
-.logo1 img {
-    width: 150px; /* Ancho fijo */
-    height: auto; /* Altura automática para mantener la proporción */
-    border-radius: 50%; /* Hace que la imagen sea circular */
-}
-
-/* Estilo para la sección de inicio de sesión */
-#login-section {
-    display: flex; /* Usa Flexbox para el diseño */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    min-height: calc(100vh - 100px); /* Altura mínima ajustada para la sección */
-    padding: 5px; /* Espaciado interno */
-    margin-top: 20px; /* Espacio superior */
-    text-align: center; /* Centra el texto */
-}
-
-/* Estilo para todos los hijos directos de #login-section */
-#login-section > * {
-    display: block; /* Asegura que los elementos sean de tipo bloque para el centrado efectivo */
+  .container.sign-up-mode:before {
+    bottom: 28%;
+    left: 50%;
+  }
 }

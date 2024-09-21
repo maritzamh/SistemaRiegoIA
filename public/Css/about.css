@@ -1,132 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-
-.container {
-  height: 100vh;
-  width: 100vw;
-  max-height: 800px;
-  max-width: 1280px;
-  min-height: 600px;
-  min-width: 1000px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.border {
-  height: 369px;
-  width: 290px;
-  background: transparent;
-  border-radius: 10px;
-  transition: border 1s;
-  position: relative;
-}
-
-.border:hover {
-  border: 1px solid #0c7213;
-}
-
-.card {
-  height: 379px;
-  width: 300px;
-  background: #808080;
-  border-radius: 10px;
-  transition: background 0.8s;
-  overflow: hidden;
-  background: #0b982a;
-  box-shadow: 0 70px 63px -60px #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.card0 {
-  background: url("https://i.pinimg.com/736x/8f/a0/51/8fa051251f5ac2d0b756027089fbffde--terry-o-neill-al-pacino.jpg")
-    center center no-repeat;
-  background-size: 300px;
-}
-
-.card0:hover {
-  background: url("https://i.pinimg.com/736x/8f/a0/51/8fa051251f5ac2d0b756027089fbffde--terry-o-neill-al-pacino.jpg")
-    left center no-repeat;
-  background-size: 600px;
-}
-
-.card0:hover h2 {
-  opacity: 1;
-}
-
-.card0:hover .fab {
-  opacity: 1;
-}
-
-.card1 {
-  background: url("https://i.pinimg.com/originals/28/d2/e6/28d2e684e7859a0dd17fbd0cea00f8a9.jpg")
-    center center no-repeat;
-  background-size: 300px;
-}
-
-.card1:hover {
-  background: url("https://i.pinimg.com/originals/28/d2/e6/28d2e684e7859a0dd17fbd0cea00f8a9.jpg")
-    left center no-repeat;
-  background-size: 600px;
-}
-
-.card1:hover h2 {
-  opacity: 1;
-}
-
-.card1:hover .fab {
-  opacity: 1;
-}
-
-.card2 {
-  background: url("https://i.pinimg.com/originals/ee/85/08/ee850842e68cfcf6e3943c048f45c6d1.jpg")
-    center center no-repeat;
-  background-size: 300px;
-}
-
-.card2:hover {
-  background: url("https://i.pinimg.com/originals/ee/85/08/ee850842e68cfcf6e3943c048f45c6d1.jpg")
-    left center no-repeat;
-  background-size: 600px;
-}
-
-.card2:hover h2 {
-  opacity: 1;
-}
-
-.card2:hover .fab {
-  opacity: 1;
-}
-
-h2 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #fff;
-  margin: 20px;
-  opacity: 0;
-  transition: opacity 1s;
-}
-
-.fab {
-  opacity: 0;
-  transition: opacity 1s;
-}
-
-.icons {
-  position: absolute;
-  fill: #fff;
-  color: #fff;
-  height: 130px;
-  top: 226px;
-  width: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
 .logo-containers {
   display: flex;
   align-items: center;
@@ -149,10 +20,7 @@ h1 {
   font-size: 4.5rem; /* Tamaño de fuente de 4.5rem */
   text-transform: uppercase; /* Convierte el texto a mayúsculas */
   color: #164043; /* Color del texto */
-}
-h1 {
-  margin-bottom: 20px;
-  text-align: center;
+  text-align: center; /* Centra el texto */
 }
 
 .input-container {
@@ -175,15 +43,126 @@ h1 {
   margin: 0 auto;
 }
 
-h1 {
-  font-size: 2.5em;
-  color: #333;
-  margin-bottom: 20px;
-}
-
 p {
   font-size: 1.2em;
   line-height: 1.6;
   color: #555;
   margin-bottom: 20px;
+}
+
+.card__collection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.cards {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 250px; /* Ajusta el tamaño según sea necesario */
+  margin: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.cards:hover {
+  transform: scale(1.05);
+}
+
+.img-responsive {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
+}
+
+.cards p {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.cards__list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.cards__list li {
+  margin: 0 5px;
+}
+
+.cards__list i {
+  font-size: 1.5em;
+  color: #555; /* Cambia el color según tu preferencia */
+}
+.social-button {
+  background-color: transparent; /* Sin fondo */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor a mano */
+  padding: 10px; /* Espaciado interno */
+  transition: transform 0.2s; /* Efecto al hacer hover */
+}
+
+.social-button:hover {
+  transform: scale(1.1); /* Aumenta el tamaño al pasar el mouse */
+}
+
+.cards__list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.cards__list li {
+  margin: 0 5px;
+}
+
+.cards__list i {
+  font-size: 1.5em;
+  color: #555; /* Cambia el color según tu preferencia */
+}
+
+
+/* Media Queries para Responsividad */
+@media (max-width: 1200px) {
+  h1 {
+      font-size: 3.5rem; /* Ajusta el tamaño del encabezado para pantallas medianas */
+  }
+
+  .cards {
+      width: 30%; /* Ajusta el tamaño para pantallas medianas */
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+      font-size: 2.5rem; /* Tamaño de fuente más pequeño para móviles */
+  }
+
+  .cards {
+      width: 90%; /* Ajusta el tamaño para pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+      font-size: 2rem; /* Tamaño de fuente aún más pequeño para pantallas muy pequeñas */
+  }
+
+  .logo2 {
+      max-width: 150px; /* Tamaño del logo más pequeño en móviles */
+  }
+
+  .presentation {
+      flex-direction: column; /* Cambia la dirección de flex para móviles */
+      height: auto; /* Permite que el contenedor ajuste su altura */
+  }
+
+  p {
+      font-size: 1em; /* Reduce el tamaño del texto en móviles */
+  }
 }

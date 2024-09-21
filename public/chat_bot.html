@@ -38,8 +38,15 @@
     </header>
 
     <main>
-        <h1 id="welcomeMessage"></h1>
-        <p>¿En qué puedo ayudarte hoy?</p>
+        
+        <section class="welcome-section">
+            <div class="text-container">
+                <h1 id="welcomeMessage"></h1>
+                <p>¿En qué puedo ayudarte hoy?</p>
+            </div>
+            <img src="/public/imagenes/robot2.png" alt="Imagen de bienvenida" class="welcome-image">
+        </section>
+        
         <div class="consulta-container">
             <div class="historial">
                 <h3>Historial de Búsqueda</h3>
@@ -54,7 +61,7 @@
         </div>
 
         <section class="buttons">
-            <button id="button1" data-question="¿Cada Cuándo la debo regar?">
+            <button id="button1" data-question="¿Cada Cuándo la debo regar una flor?">
                 <i class="fas fa-lightbulb"></i>
                 ¿Cada Cuándo la debo regar?
             </button>
@@ -83,6 +90,17 @@
             <button class="send-btn" id="botonConsulta"><i class="fas fa-paper-plane"></i> Enviar</button>
         </div>
     </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
+            <ul class="footer-links">
+                <li><a href="#privacy">Política de Privacidad</a></li>
+                <li><a href="#terms">Términos de Servicio</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </div>
+    </footer>
 
     <!-- Firebase App (modular) -->
     <script type="importmap">

@@ -14,57 +14,95 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-document.getElementById('signInForm').addEventListener('submit', async function(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
 
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-    const errorDisplay = document.createElement('p'); // Crear elemento para mostrar errores
-    errorDisplay.style.color = 'red';
-    errorDisplay.id = 'loginErrorDisplay';
+document.getElementById('signInForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value.trim();
+    const errorDisplay = document.getElementById('loginErrorDisplay');
+
+    // Ocultar cualquier mensaje previo de error
+    errorDisplay.classList.remove('show', 'close');
+
+    // Validar que el email y la contraseña no estén vacíos
+    if (email === '' || password === '') {
+        errorDisplay.textContent = 'Por favor ingrese el correo y la contraseña.';
+        errorDisplay.classList.add('show');
+
+        // Eliminar el mensaje después de 6 segundos
+        setTimeout(() => {
+            errorDisplay.classList.add('close');
+        }, 6000);
+
+        return;
+    }
 
     try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-
-        // Obtener el nombre del usuario y guardarlo en localStorage
-        //const userName = user.displayName;
-        //localStorage.setItem('userName', userName);
-        const userName = user.displayName || user.email;
-        const userId = user.uid;
-        localStorage.setItem('user',JSON.stringify({userName, userId}))
-
-        // Redirigir a la página principal
-        window.location.href = 'start.html';
+        await signInWithEmailAndPassword(auth, email, password);
+        window.location.href = '/public/start.html'; // Redirecciona si el login es exitoso
     } catch (error) {
-        // Manejar errores específicos
+        let errorMessage = '';
         switch (error.code) {
             case 'auth/invalid-email':
-                errorDisplay.textContent = 'Correo inválido.';
-                break;
-            case 'auth/user-disabled':
-                errorDisplay.textContent = 'Esta cuenta ha sido deshabilitada.';
-                break;
-            case 'auth/user-not-found':
-                errorDisplay.textContent = 'No se encontró una cuenta con este correo.';
+                errorMessage = 'Correo inválido.';
                 break;
             case 'auth/wrong-password':
-                errorDisplay.textContent = 'Contraseña incorrecta.';
+                errorMessage = 'Contraseña incorrecta.';
+                break;
+            case 'auth/user-not-found':
+                errorMessage = 'No se encontró un usuario con ese correo.';
+                break;
+            case 'auth/email-already-in-use':
+                errorMessage = 'El correo ya está en uso por otra cuenta.';
+                break;
+            case 'auth/operation-not-allowed':
+                errorMessage = 'La autenticación con correo y contraseña no está habilitada.';
+                break;
+            case 'auth/weak-password':
+                errorMessage = 'La contraseña es demasiado débil.';
+                break;
+            case 'auth/too-many-requests':
+                errorMessage = 'Demasiados intentos fallidos. Por favor, intenta de nuevo más tarde.';
+                break;
+            case 'auth/network-request-failed':
+                errorMessage = 'Error de red. Verifica tu conexión a internet.';
+                break;
+            case 'auth/requires-recent-login':
+                errorMessage = 'Para realizar esta acción, debes iniciar sesión de nuevo.';
+                break;
+            case 'auth/credential-already-in-use':
+                errorMessage = 'Estas credenciales ya están asociadas con otra cuenta de usuario.';
+                break;
+            case 'auth/invalid-credential':
+                errorMessage = 'Las credenciales proporcionadas no son válidas.';
+                break;
+            case 'auth/user-disabled':
+                errorMessage = 'La cuenta de este usuario ha sido deshabilitada.';
+                break;
+            case 'auth/account-exists-with-different-credential':
+                errorMessage = 'Ya existe una cuenta con el mismo correo electrónico pero con credenciales diferentes.';
+                break;
+            case 'auth/popup-blocked':
+                errorMessage = 'El inicio de sesión emergente ha sido bloqueado por el navegador.';
+                break;
+            case 'auth/popup-closed-by-user':
+                errorMessage = 'El inicio de sesión emergente fue cerrado antes de completarse la operación.';
+                break;
+            case 'auth/unverified-email':
+                errorMessage = 'El correo electrónico no ha sido verificado.';
                 break;
             default:
-                errorDisplay.textContent = `Error: ${error.message}`;
+                errorMessage = `Error: ${error.message}`;
+                break;
         }
 
-        // Agregar mensaje de error al formulario si no existe
-        if (!document.getElementById('loginErrorDisplay')) {
-            document.getElementById('signInForm').appendChild(errorDisplay);
-        }
+        errorDisplay.textContent = errorMessage;
+        errorDisplay.classList.add('show');
 
-        // Ocultar mensaje de error después de 5 segundos
+        // Eliminar el mensaje después de 6 segundos
         setTimeout(() => {
-            if (errorDisplay) {
-                errorDisplay.remove();
-            }
-        }, 5000);
+            errorDisplay.classList.add('close');
+        }, 6000);
     }
 });

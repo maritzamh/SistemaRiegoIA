@@ -1,95 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clasificación de Enfermedades de Plantas</title>
-    <!-- Incluye la librería de TensorFlow.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <title>Clima Automático</title>
     <style>
-        #output {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+        .weather-info {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
             margin-top: 20px;
         }
-        #image-preview {
-            max-width: 256px;
-            max-height: 256px;
-            margin-top: 10px;
-            display: none; /* Oculta la imagen por defecto */
+        .weather-info img {
+            width: 50px;
+        }
+        .loader {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <h1>Clasificación de Enfermedades de Plantas</h1>
-    <input type="file" id="image-upload" accept="image/*" />
-    <img id="image-preview" alt="Vista previa de la imagen" />
-    <button id="predict-button" disabled>Predecir</button>
-    <div id="output"></div>
+
+    <h1>Clima Automático con Ubicación</h1>
+    <div class="loader" id="loader">Cargando...</div>
+    
+    <div class="weather-info" id="weather-info" style="display: none;">
+        <h2 id="city"></h2>
+        <div id="temperature"></div>
+        <img id="weather-icon" alt="Icono del clima" />
+        <div id="description"></div>
+    </div>
 
     <script>
-        let model;
+        const weatherInfo = document.getElementById('weather-info');
+        const cityElement = document.getElementById('city');
+        const temperatureElement = document.getElementById('temperature');
+        const weatherIcon = document.getElementById('weather-icon');
+        const descriptionElement = document.getElementById('description');
+        const loader = document.getElementById('loader');
 
-        async function loadModel() {
-            try {
-                model = await tf.loadGraphModel('plant/model.json');
-                console.log('Modelo cargado correctamente');
-            } catch (error) {
-                console.error('Error al cargar el modelo:', error);
-                alert('Hubo un error al cargar el modelo. Revisa la consola para más detalles.');
+        // Función para obtener la ubicación del usuario usando la API de geolocalización
+        function getLocation() {
+            loader.style.display = 'block'; // Mostrar el loader
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(success, error);
+            } else {
+                alert('Geolocalización no es soportada por este navegador.');
+                loader.style.display = 'none'; // Ocultar el loader
             }
         }
 
-        loadModel(); // Cargar el modelo al inicio
+        // Función que se ejecuta al obtener la ubicación
+        function success(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            getWeather(lat, lon);
+        }
 
-        const imgElement = document.getElementById('image-preview');
-        const predictButton = document.getElementById('predict-button');
+        // Función que se ejecuta si hay un error al obtener la ubicación
+        function error() {
+            alert('No se pudo obtener la ubicación.');
+            loader.style.display = 'none'; // Ocultar el loader
+        }
 
-        document.getElementById('image-upload').addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                imgElement.src = URL.createObjectURL(file);
-                imgElement.style.display = 'block'; // Muestra la imagen cargada
-                predictButton.disabled = false; // Habilita el botón de predecir
-            }
-        });
+        // Función para obtener el clima usando OpenWeatherMap
+        function getWeather(lat, lon) {
+            const apiKey = '06ca8f1cab182c8132ce9ba675537aaf';  // Reemplaza con tu clave de OpenWeatherMap
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
+                .then(response => {
+                    if (!response.ok) throw new Error('Error en la API del clima');
+                    return response.json();
+                })
+                .then(data => {
+                    const temperature = data.main.temp;
+                    const description = data.weather[0].description;
+                    const icon = data.weather[0].icon;
 
-        predictButton.addEventListener('click', async () => {
-            if (!model) {
-                alert('El modelo aún no se ha cargado. Por favor espera un momento.');
-                return;
-            }
+                    cityElement.textContent = `Clima en ${data.name}`;
+                    temperatureElement.textContent = `Temperatura: ${Math.round(temperature)}°C`;
+                    weatherIcon.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+                    descriptionElement.textContent = description.charAt(0).toUpperCase() + description.slice(1);
 
-            if (imgElement.src) {
-                // Preprocesar la imagen
-                const tensor = tf.browser.fromPixels(imgElement)
-                    .resizeNearestNeighbor([256, 256]) // Ajusta el tamaño a 256x256
-                    .toFloat()
-                    .div(tf.scalar(255))
-                    .expandDims();
+                    weatherInfo.style.display = 'block'; // Mostrar la información del clima
+                    loader.style.display = 'none'; // Ocultar el loader
+                })
+                .catch(error => {
+                    console.error('Error al obtener el clima:', error);
+                    alert('No se pudo obtener el clima.');
+                    loader.style.display = 'none'; // Ocultar el loader en caso de error
+                });
+        }
 
-                // Hacer la predicción
-                const prediction = await model.predict(tensor).data();
-
-                // Obtener el índice de la clase con mayor probabilidad
-                const maxIndex = prediction.indexOf(Math.max(...prediction));
-
-                // Definir las etiquetas de clases
-                const labels = [
-                    "Apple___Apple_scab", "Apple___Black_rot", "Apple___Cedar_apple_rust", "Apple___healthy",
-                    "Background_without_leaves", "Blueberry___healthy", "Cherry___healthy", "Cherry___Powdery_mildew",
-                    "Corn___Cercospora_leaf_spot Gray_leaf_spot", "Corn___Common_rust", "Corn___healthy", "Corn___Northern_Leaf_Blight",
-                    "Potato___Early_blight", "Potato___Late_blight", "Potato___healthy", "Raspberry___healthy",
-                    "Strawberry___healthy", "Strawberry___Leaf_scorch", "Tomato___Bacterial_spot", "Tomato___Early_blight",
-                    "Tomato___healthy", "Tomato___Late_blight", "Tomato___Leaf_Mold", "Tomato___Septoria_leaf_spot",
-                    "Tomato___Spider_mites Two-spotted_spider_mite", "Tomato___Target_Spot", "Tomato___Tomato_mosaic_virus", 
-                    "Tomato___Tomato_Yellow_Leaf_Curl_Virus"
-                ];
-
-                // Mostrar el resultado
-                document.getElementById('output').innerText = `Predicción: ${labels[maxIndex]} (Confianza: ${(prediction[maxIndex] * 100).toFixed(2)}%)`;
-            } else {
-                alert('Por favor carga una imagen antes de predecir.');
-            }
-        });
+        // Llamar a la función para obtener la ubicación y clima al cargar la página
+        window.onload = getLocation;
     </script>
+
 </body>
 </html>
